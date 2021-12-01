@@ -1,6 +1,6 @@
 <html>
     <?php
         echo "Hello world!";
-        echo "hello nerd"
+        echo "hello nerd";
     ?>
 </html>
