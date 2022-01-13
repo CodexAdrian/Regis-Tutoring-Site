@@ -32,7 +32,7 @@
         <div class="sidenav">
             <!-- This sidebar will display all the user's data, like their name, picture, etc, using the local variables from the query -->
             <?php
-                echo "<a href='tutor-application.php'>Sign up to become a tutor!</a>"
+                echo "<a href='tutor-application.php'>Sign up to become a tutor!</a>";
                 if($userTypeID == 2) {
                     echo "<a href='teacher-homepage.php'>Teacher Homepage</a>";
                 }
