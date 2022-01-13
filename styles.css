@@ -1,3 +1,8 @@
-.product {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
+
+.sidenav {
     @apply
 }
