@@ -9,12 +9,10 @@
     </head>
 
     <body>
-        <!-- Header information, like logo, site name, etc. will be placed here -->
-        <form action="homepage.php" method="post">
-            <!-- Google authentication form will be placed here-->
-            <input type="submit" value="Sign in" name="signIn">
-        </form>
-
+        <!-- Logo, site name, etc. will be placed here -->
+        <!-- Google authentication form will be placed here; if successful, links to homepage with userID in query string -->
+        <!-- Else, prints error statement -->
+        
         <br>
         <a href='regis.org'>Return to regis.org</a>
         

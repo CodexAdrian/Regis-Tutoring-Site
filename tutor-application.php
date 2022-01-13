@@ -4,8 +4,6 @@
 		or die("Error: Cannot connect to database server");
 ?>
 
-
-
 <html>
 	<head>
 	<title>Tutor Application Form</title>
@@ -18,12 +16,12 @@
 		<br>
 		<br>
 		
-		<form action="tutor-application-form-action.php" method="post">
+		<form action="tutor-application-action.php" method="post">
 			
 			<!-- need to run a GET variable with the userID -->
 			
 			<b>Last Name: </b><input name="lastName" size="20"><br>
-			<b>First Name: </b><input name="firstName" size="20"><br>
+			<b>First Name: </b><input name="firstName" size="20"><br>	<!-- From Ethan: Do we really need this if we already have ths uer ID? -->
 			
 			<b>Subject: </b> 
 			<!-- Drop Down Menu -->

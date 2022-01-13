@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <?php
 	#Connecting to database server
 	$dbc = mysqli_connect("localhost","tutorDBWebUser","TutoringIsGreat","tutorDB")     //Webuser still has to be made
@@ -17,7 +15,7 @@
 
     <body>
         <?php
-            $userID = $_POST['userID'];
+            $userID = $_GET['userID'];
             $sql = "SELECT * FROM users WHERE userID = $userID";
             $rs = mysqli_query($dbc, $sql);
 
