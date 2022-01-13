@@ -16,10 +16,10 @@
         </form>
 
         <br>
-        <a href='regis.org'>Return tot regis.org</a>
+        <a href='regis.org'>Return to regis.org</a>
         
     </body>
 	
-	just ot check how to push
+	Just to check how to push.
 	
 </html>
