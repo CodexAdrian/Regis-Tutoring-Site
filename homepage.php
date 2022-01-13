@@ -1,35 +1,9 @@
-<<<<<<< Updated upstream
-<?php
-	#Connecting to database server
-	$dbc = mysqli_connect("localhost","tutorDBWebUser","TutoringIsGreat","tutorDB")     //Webuser still has to be made
-		or die("Error: Cannot connect to database server");
-?>
-<html>
-    <head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="output.css" rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <title>Tutoring Homepage</title>
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            red: 'D61341'
-                        }
-                    }
-                }
-            }
-        </script>
-        <!-- The rest of the necessary miscellaneous heading data, like author, description, etc will be typed here -->
-    </head>
 <?php
 	#Connecting to database server
     $dbc = "";
     include "auth.php";
-
+    include "nav.php";
 ?>
-    <body class="m-0" style="background-color: #20182D">
         <?php
         /* commented out because it is causing page not to load
             $userID = $_GET['userID'];
@@ -44,13 +18,6 @@
                 $picture = $row['picture'];
             }*/
         ?>
-        <div class="flex flex-col w-max">
-        <div class="flex flex-row m-2"><!-- Top Nav -->
-            <div><span class="material-icons text-white text-3xl p-4">menu</span></div>
-            <div class="rounded-3xl p-2 content-center justify-center mt-auto mb-auto ml-10 flex flex-row h-min" style="background-color: #575271"><span class="material-icons text-white ml-2">search</span><p class="text-white ml-3 mr-80">Search</p></div>
-            <div class="rounded-3xl p-2 content-center justify-center mt-auto mb-auto ml-3 flex flex-row h-min" style="background-color: #D61341"><p class="text-white ml-3">Tutor Sign Up</p><span class="material-icons text-white ml-2 mr-3">school</span></div>
-            <div class="w-max"></div>
-            <div><p>Test</p></div>
         </div><!-- Top Nav -->
             <!-- This sidebar will display all the user's data, like their name, picture, etc, using the local variables from the query -->
             <?php
