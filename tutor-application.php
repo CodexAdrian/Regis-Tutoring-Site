@@ -66,8 +66,7 @@
 					
 				} //end of while loop
 			?>
-			</select >
-			
+			</select >			
 			
 			<b>Preferred Day: </b>
 			<!-- Drop Down Menu -->
@@ -82,8 +81,7 @@
 				
 			?>
 			</select >
-			
-			
+						
 			<b>Preferred Time: </b>
 			<!-- Drop Down Menu -->
 			<select name="prefTimeID">
@@ -96,11 +94,6 @@
 			?>
 			</select >
 			
-			
-			
-			
-			
-		
 			<button type="submit" name="tutorApplicaitonForm" value="Submit Application">
 				Submit Application <i class="glyphicon glyphicon-ok"></i>
 			</button>

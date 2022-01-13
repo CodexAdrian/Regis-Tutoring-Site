@@ -15,7 +15,8 @@
         <form action="tutee-signup-action.php" method="post">
 
             <!-- Run $_GET to get the user ID from link -->
-            <!-- Run $_GET to get the subject from the calendar -->
+            <!-- Run $_POST get the subject from the calendar link -->
+            <!-- Run $_POST to get time slot from the calendar link with prefDayID and prefTimeID -->
 
             <?php 
                 $sql = "SELECT * FROM users WHERE userID = 2 INNER JOIN userToTopics ON users.userID = usersToTopics.userID INNER JOIN topics ON usersToTopics.topicID = topics.topicID";
