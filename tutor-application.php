@@ -1,17 +1,9 @@
 <?php
-	#Connecting to database server
-	$dbc = mysqli_connect("localhost","tutorDBWebUser","TutoringIsGreat","tutorDB")     //Webuser still has to be made
-		or die("Error: Cannot connect to database server");
-?>
+$dbc = "";
+include "auth.php";
+include "nav.php";
 
-<html>
-	<head>
-	<title>Tutor Application Form</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	</head>
-	
-	<body>
+?>
 		<b>This is the tutor application form</b>
 		<br>
 		<br>

@@ -18,7 +18,7 @@
                 $picture = $row['picture'];
             }*/
         ?>
-        </div><!-- Top Nav -->
+        <!-- Top Nav -->
             <!-- This sidebar will display all the user's data, like their name, picture, etc, using the local variables from the query -->
             <?php
                 echo "<a href='tutor-application.php'>Sign up to become a tutor!</a>";
@@ -26,7 +26,6 @@
                     echo "<a href='teacher-homepage.php'>Teacher Homepage</a>";
                 }
             ?>
-        </div>
 
         <?php
             $sql = "SELECT * FROM subjects INNER JOIN users ON subjects.teacherID = users.userID";

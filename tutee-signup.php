@@ -1,17 +1,9 @@
 <?php
-	#Connecting to database server
-	$dbc = mysqli_connect("localhost","tutorDBWebUser","TutoringIsGreat","tutorDB")     //Webuser still has to be made
-		or die("Error: Cannot connect to database server");
-?>
-
-<html>
-	<head>
-	<title>Tutee Signup Form</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	</head>
+    $dbc = "";
+    include "auth.php";
+    include "nav.php";
 	
-	<body>
+?>
         <form action="tutee-signup-action.php" method="post">
 
             <!-- Run $_GET to get the user ID from link -->
