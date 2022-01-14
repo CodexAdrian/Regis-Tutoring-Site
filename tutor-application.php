@@ -58,8 +58,7 @@ include "nav.php";
 					
 				} //end of while loop
 			?>
-			</select >
-			
+			</select >			
 			
 			<b>Preferred Day: </b>
 			<!-- Drop Down Menu -->
@@ -74,8 +73,7 @@ include "nav.php";
 				
 			?>
 			</select >
-			
-			
+						
 			<b>Preferred Time: </b>
 			<!-- Drop Down Menu -->
 			<select name="prefTimeID">
@@ -88,11 +86,6 @@ include "nav.php";
 			?>
 			</select >
 			
-			
-			
-			
-			
-		
 			<button type="submit" name="tutorApplicaitonForm" value="Submit Application">
 				Submit Application <i class="glyphicon glyphicon-ok"></i>
 			</button>
