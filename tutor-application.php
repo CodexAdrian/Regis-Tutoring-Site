@@ -1,10 +1,9 @@
 <?php
-$dbc = "";
-include "auth.php";
-include "nav.php";
-
+    $dbc = "";
+    include "auth.php";
+    include "nav.php";
 ?>
-<b>This is the tutor application form</b>
+<b class="text-slate-400 text-xl">Tutor application form:</b>
 <br>
 <br>
 
@@ -14,7 +13,7 @@ include "nav.php";
 
     <b>Last Name: </b><input name="lastName" size="20"><br>
     <b>First Name: </b><input name="firstName" size="20"><br>
-    <!-- From Ethan: Do we really need this if we already have ths uer ID? -->
+    <!-- From Ethan: Do we really need this if we already have the user ID? -->
 
     <b>Subject: </b>
     <!-- Drop Down Menu -->
@@ -60,6 +59,8 @@ include "nav.php";
         } //end of while loop
         ?>
     </select>
+
+    <!-- From Ethan: We should include a separate field here that allows users to explain their reasoning for becoming a tutor. This will involve adding another column to the database -->
 
     <b>Preferred Day: </b>
     <!-- Drop Down Menu -->
