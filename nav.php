@@ -12,10 +12,10 @@
     <div class="flex justify-between border-gray-700 border-b-2"><!-- Top Nav -->
         <div class="flex flex-row">
             <div><span class="material-icons text-white text-3xl p-4 border-gray-700 border-r-2">menu</span></div>
-            <div class="rounded-3xl p-2 content-center justify-center mt-auto mb-auto ml-10 flex flex-row h-min"
+            <div class="rounded-3xl p-2 mt-auto mb-auto ml-10 flex"
                  style="background-color: #575271"><span class="material-icons text-white ml-2">search</span>
                 <p class="text-white ml-3 mr-80">Search</p></div>
-            <div class="rounded-3xl p-2 content-center justify-center mt-auto mb-auto ml-3 flex flex-row h-min"
+            <div class="rounded-3xl p-2 mt-auto mb-auto ml-10 flex"
                  style="background-color: #D61341"><p class="text-white ml-3">Tutor Sign Up</p><span
                         class="material-icons text-white ml-2 mr-3">school</span></div>
         </div>
