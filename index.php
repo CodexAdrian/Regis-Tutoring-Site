@@ -17,7 +17,5 @@
         <a href='regis.org'>Return to regis.org</a>
         
     </body>
-	
-	Just to check how to push.
-	
+
 </html>
