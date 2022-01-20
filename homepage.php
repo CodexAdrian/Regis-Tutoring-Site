@@ -1,28 +1,26 @@
 <?php
-	#Connecting to database server
-    $dbc = "";
     include "auth.php";
     include "nav.php";
+    include "session.php"
 ?>
         <?php
         /* commented out because it is causing page not to load
             $userID = $_GET['userID'];
             $sql = "SELECT * FROM users WHERE userID = $userID";
             $rs = mysqli_query($dbc, $sql);
-
-            while ($row = mysqli_fetch_array($rs)) {
-                $userID = $row['userID'];
-                $userTypeID = $row['userTypeID'];
-                $firstName = $row['firstName'];
-                $lastName = $row['lastName'];
-                $picture = $row['picture'];
-            }*/
+            $row = mysqli_fetch_array($rs)
+            $_SESSION['userID'] = $row['userID'];
+            $_SESSION['userTypeID'] = $row['userTypeID'];
+            $_SESSION['firstName'] = $row['firstName'];
+            $_SESSION['lastName'] = $row['lastName'];
+            $_SESSION['picture'] = $row['picture'];
+        */
         ?>
         <!-- Top Nav -->
             <!-- This sidebar will display all the user's data, like their name, picture, etc, using the local variables from the query -->
             <?php
                 echo "<a href='tutor-application.php'>Sign up to become a tutor!</a>";
-                if($userTypeID == 2) {
+                if($_SESSION['userTypeID'] == 2) {
                     echo "<a href='teacher-homepage.php'>Teacher Homepage</a>";
                 }
             ?>

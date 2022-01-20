@@ -1,5 +1,5 @@
 <?php
-    $dbc = "";
+    include "session.php";
     include "auth.php";
     include "nav.php";
 ?>
@@ -9,11 +9,7 @@
 
 <form action="tutor-application-action.php" method="post">
 
-    <!-- need to run a GET variable with the userID -->
-
-    <b>Last Name: </b><input name="lastName" size="20"><br>
-    <b>First Name: </b><input name="firstName" size="20"><br>
-    <!-- From Ethan: Do we really need this if we already have the user ID? -->
+    <!-- We can omit all the user-inputted data and the userID by using session variables -->
 
     <b>Subject: </b>
     <!-- Drop Down Menu -->
@@ -42,8 +38,7 @@
     <select name="refTeacherID">
         <?php
         // select the data needed to display the drop-down menu for possible teachers
-        $sql1 = "SELECT * FROM users 
-							WHERE userTypeID = 2;";
+        $sql1 = "SELECT * FROM users WHERE userTypeID = 2;";
         //echo $sql;
         $rs = mysqli_query($dbc, $sql1);
 

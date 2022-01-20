@@ -1,7 +1,9 @@
 <?php
+	include "auth.php";
+	include "session.php";
+	
 	# Write form post variables into local variables
-	$lastName = $_POST['lastName'];
-	$firstName = $_POST['firstName'];
+	//All the user's information can be accessed by the session variables
 	$prefDayID = $_POST['prefDayID'];
 	$prefTimeID = $_POST['prefTimeID'];
 	// $senderID = $_GET['userID'] // also need the userID through a get variable in order to run the insert statement. This GET variable will not work right now. 
