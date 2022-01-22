@@ -55,7 +55,10 @@
         ?>
     </select>
 
-    <!-- From Ethan: We should include a separate field here that allows users to explain their reasoning for becoming a tutor. This will involve adding another column to the database -->
+    <!-- From Ethan: We should include a separate field that allows users to give tutees the option to submit additional comments on why they're signing up. This will involve adding another column to the database.
+    <b>Additional comments:</b><br>
+    <textarea rows="5" cols="60" name="tuteeSignupComments" placeholder="Comments, concerns, area you'd like to focus on, etc."></textarea>
+    -->
 
     <b>Preferred Day: </b>
     <!-- Drop Down Menu -->

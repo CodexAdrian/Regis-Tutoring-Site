@@ -1,4 +1,7 @@
 <?php
+	include "auth.php";
+	include "session.php";
+
 	# Write form post variables into local variables
 	$lastName = $_POST['lastName'];
 	$firstName = $_POST['firstName'];
