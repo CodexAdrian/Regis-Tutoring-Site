@@ -19,6 +19,7 @@ include "session.php"
 <!-- Top Nav -->
 <!-- This sidebar will display all the user's data, like their name, picture, etc, using the local variables from the query -->
 <?php
+/*
 if ($_SESSION['userTypeID'] == 2) {
     echo "<a href='teacher-homepage.php'>Teacher Homepage</a>";
 }
@@ -32,8 +33,8 @@ if ($_SESSION['userTypeID'] == 2) {
         $subjectID = $row['subjectID'];
         $subjectName = $row['subjectName'];
         $teacherID = $row['teacherID'];
-
-        ?>
+*/
+?>
 
         <div class="m-5 rounded-lg p-4 text-white h-min" style="background-color: #575271">
             <div class="flex flex-row">
@@ -51,7 +52,7 @@ if ($_SESSION['userTypeID'] == 2) {
         </div>
 
         <?php
-    }
+    //}
     //Ignoring formatting for now
     ?>
 </div>
