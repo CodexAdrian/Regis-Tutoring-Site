@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Tutoring Homepage</title>
 </head>
-<body class="m-0" style="background-color: #20182D">
+<body class="m-0 text-white" style="background-color: #20182D">
 <div class="flex flex-col">
     <div class="flex justify-between border-gray-700 border-b-2"><!-- Top Nav -->
         <div class="flex flex-row">
