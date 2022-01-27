@@ -16,7 +16,7 @@
                  style="background-color: #575271"><span class="material-icons text-white ml-2">search</span>
                 <p class="text-white ml-3 mr-80">Search</p></div>
             <div class="rounded-3xl p-2 mt-auto mb-auto ml-10 flex"
-                 style="background-color: #D61341"><p class="text-white ml-3">Tutor Sign Up</p><span
+                 style="background-color: #D61341"><p class="text-white ml-3"><a href="tutor-application.php">Tutor Sign Up</a></p><span
                         class="material-icons text-white ml-2 mr-3">school</span></div>
         </div>
         <div class="flex flex-row">

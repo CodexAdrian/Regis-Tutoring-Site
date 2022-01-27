@@ -20,7 +20,7 @@
 	$sql = "INSERT INTO tutorApplications
 		(recipientID, senderID, subjectID, refTeacherID, prefDayID, prefTimeID) 
 		VALUES 
-		(recipientID, senderID, subjectID, refTeacherID, prefDayID, prefTimeID)";		
+		($recipientID, $senderID, $subjectID, $refTeacherID, $prefDayID, $prefTimeID)";		
 
 	// will not execute, need to get the senderID first
 	//echo $sql . "<br>";

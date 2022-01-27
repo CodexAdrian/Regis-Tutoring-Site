@@ -1,9 +1,8 @@
 <?php
-include "auth.php";
-include "nav.php";
-include "session.php"
-?>
-<?php
+    include "auth.php";
+    include "nav.php";
+    include "session.php"
+
 /* commented out because it is causing page not to load
     $userID = $_GET['userID'];
     $sql = "SELECT * FROM users WHERE userID = $userID";
@@ -15,10 +14,7 @@ include "session.php"
     $_SESSION['lastName'] = $row['lastName'];
     $_SESSION['picture'] = $row['picture'];
 */
-?>
-<!-- Top Nav -->
-<!-- This sidebar will display all the user's data, like their name, picture, etc, using the local variables from the query -->
-<?php
+//Something to link to either the tutor homepage or the teacher homepage
 /*
 if ($_SESSION['userTypeID'] == 2) {
     echo "<a href='teacher-homepage.php'>Teacher Homepage</a>";
