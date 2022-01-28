@@ -1,9 +1,7 @@
 <?php
-    include "auth.php";
     include "nav.php";
-    include "session.php"
-
-/* commented out because it is causing page not to load
+    include "session.php";
+    /* commented out because it is causing page not to load
     $userID = $_GET['userID'];
     $sql = "SELECT * FROM users WHERE userID = $userID";
     $rs = mysqli_query($dbc, $sql);
@@ -14,7 +12,9 @@
     $_SESSION['lastName'] = $row['lastName'];
     $_SESSION['picture'] = $row['picture'];
 */
-//Something to link to either the tutor homepage or the teacher homepage
+
+    include "nav.php";
+
 /*
 if ($_SESSION['userTypeID'] == 2) {
     echo "<a href='teacher-homepage.php'>Teacher Homepage</a>";
