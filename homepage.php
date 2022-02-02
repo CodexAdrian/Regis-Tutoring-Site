@@ -13,8 +13,6 @@
     $_SESSION['picture'] = $row['picture'];
 */
 
-    include "nav.php";
-
 /*
 if ($_SESSION['userTypeID'] == 2) {
     echo "<a href='teacher-homepage.php'>Teacher Homepage</a>";
