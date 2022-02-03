@@ -43,6 +43,21 @@
 		echo "Record Insertion Failed!";	
 	}
 	
+	#Emailing the teacher that a new application has come in
+	$sql = "
+		SELECT * 
+		FROM users 
+		WHERE userID = $recipientID
+	";
+	$rs = mysqli_query($dbc, $sql);
+	$row = mysqli_fetch_array($rs);
+	$recipientFirstName = $row[2];
+	$recipientLastName = $row[3];
+	$recipientFirstInitial = substr($recipientFirstName, 0, 0);
+
+	$to = $recipientFirstInitial . $recipientLastName . "@regis.org";
+	$subject = "New Tutor Application from: " . $_SESSION['firstName'] . " " . $_SESSION['lastName'];
+	$message = "";
 ?>
 
 <a href="homepage.php">Go to the Home Page</a>
