@@ -27,9 +27,10 @@
     <div class="flex flex-row">
         <div class="flexjustify-between p-4 pt-5 border-gray-700 border-r-2 overflow-hidden h-full">
             <div class="flex flex-col">
-            <span class="material-icons text-white text-3xl pb-10">school</span>
-            <span class="material-icons text-white text-3xl pb-10">account_circle</span>
-                <span class="material-icons text-white text-3xl pb-10">event</span
+                <span class="material-icons text-white text-3xl pb-10">home</span>
+                <span class="material-icons text-white text-3xl pb-10">school</span>
+                <span class="material-icons text-white text-3xl pb-10">account_circle</span>
+                <span class="material-icons text-white text-3xl pb-10">event</span>
             </div>
             <div class="mt-auto">
                 <p>H</p>

@@ -28,7 +28,7 @@
 	$sql = "INSERT INTO tutorApplications
 		(recipientID, senderID, subjectID, refTeacherID, prefDayID, prefTimeID, isPrivate) 
 		VALUES 
-		($recipientID, $_SESSION["userID"], $subjectID, $refTeacherID, $prefDayID, $prefTimeID, $isPrivate)";		
+		($recipientID, $_SESSION['userID'], $subjectID, $refTeacherID, $prefDayID, $prefTimeID, $isPrivate)";		
 
 	// will not execute, need to get the senderID first
 	//echo $sql . "<br>";
@@ -45,4 +45,4 @@
 	
 ?>
 
-<a href="index.php">Go to the Home Page</a>
+<a href="homepage.php">Go to the Home Page</a>
