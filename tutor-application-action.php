@@ -28,7 +28,7 @@
 	$sql = "INSERT INTO tutorApplications
 		(recipientID, senderID, subjectID, refTeacherID, prefDayID, prefTimeID, isPrivate) 
 		VALUES 
-		($recipientID, $_SESSION['userID'], $subjectID, $refTeacherID, $prefDayID, $prefTimeID, $isPrivate)";		
+		($recipientID, " . $_SESSION['userID'] . ", $subjectID, $refTeacherID, $prefDayID, $prefTimeID, $isPrivate)";		
 
 	// will not execute, need to get the senderID first
 	//echo $sql . "<br>";
@@ -44,20 +44,28 @@
 	}
 	
 	#Emailing the teacher that a new application has come in
-	$sql = "
+	$sql1 = "
 		SELECT * 
 		FROM users 
 		WHERE userID = $recipientID
 	";
-	$rs = mysqli_query($dbc, $sql);
-	$row = mysqli_fetch_array($rs);
+	$rs1 = mysqli_query($dbc, $sql1);
+	$row1 = mysqli_fetch_array($rs);
 	$recipientFirstName = $row[2];
 	$recipientLastName = $row[3];
 	$recipientFirstInitial = substr($recipientFirstName, 0, 0);
 
+	$sql2 = "
+		SELECT *
+		FROM users
+		WHERE userID = $refTeacherID
+	";
+	$rs2 = mysqli_query($dbc, $sql2);
+	$row2 = 
+
 	$to = $recipientFirstInitial . $recipientLastName . "@regis.org";
 	$subject = "New Tutor Application from: " . $_SESSION['firstName'] . " " . $_SESSION['lastName'];
-	$message = "";
+	$message = $_SESSION['firstName'] . " " . $_SESSION['lastName'] . " has submitted a tutor application for your class, referencing " . $refTeacherFirstName . " " . $refTeacherLastName . ".";	
 ?>
 
 <a href="homepage.php">Go to the Home Page</a>

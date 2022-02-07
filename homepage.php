@@ -14,10 +14,6 @@
 */
 
 /*
-if ($_SESSION['userTypeID'] == 2) {
-    echo "<a href='teacher-homepage.php'>Teacher Homepage</a>";
-}
-?>
 <div class="grid grid-cols-5 w-full">
     <?php
     $sql = "SELECT * FROM subjects INNER JOIN users ON subjects.teacherID = users.userID";
