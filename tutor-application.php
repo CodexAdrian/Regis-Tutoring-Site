@@ -2,6 +2,7 @@
     include "session.php";
     include "auth.php";
     include "nav.php";
+    include "functions.php";
 ?>
 <b class="text-slate-400 text-xl">Tutor application form:</b>
 <br>

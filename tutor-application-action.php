@@ -1,6 +1,7 @@
 <?php
 	include "auth.php";
 	include "session.php";
+	include "functions.php";
 
 	# Write form post variables into local variables
 	$recipientID = $_POST['recipientID'];
@@ -43,16 +44,16 @@
 		echo "Record Insertion Failed!";	
 	}
 	
-	#Emailing the teacher that a new application has come in
+	#Emailing the head of tutoring that a new application has come in
 	$sql1 = "
 		SELECT * 
 		FROM users 
 		WHERE userID = $recipientID
 	";
 	$rs1 = mysqli_query($dbc, $sql1);
-	$row1 = mysqli_fetch_array($rs);
-	$recipientFirstName = $row[2];
-	$recipientLastName = $row[3];
+	$row1 = mysqli_fetch_array($rs1);
+	$recipientFirstName = $row1[2];
+	$recipientLastName = $row1[3];
 	$recipientFirstInitial = substr($recipientFirstName, 0, 0);
 
 	$sql2 = "
@@ -61,11 +62,18 @@
 		WHERE userID = $refTeacherID
 	";
 	$rs2 = mysqli_query($dbc, $sql2);
-	$row2 = 
+	$row2 = mysqli_fetch_array($rs2);
+	$refTeacherFirstName = $row2[2];
+	$refTeacherLastName	= $row2[3];
+	$refTeacherFullName = $refTeacherFirstName . $refTeacherLastName;
+
+	$userFirstInitial = substr($_SESSION['firstName'], 0, 0);
 
 	$to = $recipientFirstInitial . $recipientLastName . "@regis.org";
-	$subject = "New Tutor Application from: " . $_SESSION['firstName'] . " " . $_SESSION['lastName'];
-	$message = $_SESSION['firstName'] . " " . $_SESSION['lastName'] . " has submitted a tutor application for your class, referencing " . $refTeacherFirstName . " " . $refTeacherLastName . ".";	
+	$subject = "New Tutor Application from: " . $_SESSION['fullName'];
+	$message = $_SESSION['fullName'] . " has submitted a tutor application for your subject, referencing " . $refTeacherFullName . ".";	
+	$header = "From: " . $_SESSION['fullName'] . " <" . $_SESSION['username'] . "@regis.org>" . "\r\n" . 
+	"CC: ";
 ?>
 
 <a href="homepage.php">Go to the Home Page</a>

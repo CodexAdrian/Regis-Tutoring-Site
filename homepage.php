@@ -1,6 +1,7 @@
 <?php
     include "nav.php";
     include "session.php";
+    include "functions.php";
     /* commented out because it is causing page not to load
     $userID = $_GET['userID'];
     $sql = "SELECT * FROM users WHERE userID = $userID";

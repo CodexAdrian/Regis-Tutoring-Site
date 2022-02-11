@@ -1,6 +1,7 @@
 <?php
 	include "auth.php";
 	include "session.php";
+	include "functions.php";
 	
 	# Write form post variables into local variables
 	//All the user's information can be accessed by the session variables
