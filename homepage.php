@@ -41,7 +41,6 @@
                 <p class="text-md ml-2">Adrian Ortiz Villagomez</p>
             </div>
         </div>
-
         <?php
     //}
     //Ignoring formatting for now
