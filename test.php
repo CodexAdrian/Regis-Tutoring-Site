@@ -7,6 +7,5 @@ echo $token . "<br>";
 $id = getUserID($token);
 echo $id;
 ?>
-
 </body>
 </html>
