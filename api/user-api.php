@@ -9,9 +9,9 @@ function getUserProfile(int $userid, String $token) {
     if($exists) {
         //TODO grab data from database
     } else {
-        $userProfile1 = file_get_contents(BASE_URI. "?wstoken=$token&moodlewsrestformat=json&field=id&id=$userid");
-        $userProfile2 = file_get_contents(BASE_URI. "?wstoken=$token&moodlewsrestformat=json&values[]=86");
-        $profilePicture;
+        $userProfile1 = file_get_contents(BASE_URI. "?wstoken=$token&moodlewsrestformat=json&wsfunction=core_webservice_get_site_info");
+        $userProfile2 = file_get_contents(BASE_URI. "?wstoken=$token&moodlewsrestformat=json&wsfunction=core_user_get_users_by_field&field=id&values[]=$userid");
+        $profilePicture = ;
         $firstName;
         $lastName;
         $userName;
