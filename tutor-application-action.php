@@ -4,15 +4,18 @@
 	include "functions.php";
 
 	# Write form post variables into local variables
-	$recipientID = $_POST['recipientID'];
-	$refTeacherID = $_POST['refTeacherID'];
-	$prefDayID = $_POST['prefDayID'];
-	$prefTimeID = $_POST['prefTimeID'];
-	if(isset($isPrivate)) {
-		$isPrivate = 1;
+	$lastName = $_POST['lastName'];
+    $firstName = $_POST['firstName'];
+    $recipientID = $_POST['recipientID'];
+    $subjectID = $_POST['subjectID'];
+    $refTeacherID = $_POST['refTeacherID'];
+    $prefDayID = $_POST['prefDayID'];
+    $prefTimeBlockID = $_POST['prefTimeBlockID'];
+	if(isset($oneOnOne)) {
+		$oneOnOne = 1;
 	}
 	else {
-		$isPrivate = 0;
+		$oneOnOne = 0;
 	}
 	$tutorReason = $_POST['tutorReason'];
 	$filename = random_bytes(20);
@@ -22,11 +25,11 @@
 	// echo ; 
 	// exit;
 	//Need to fileIO the reasoning
-	
+
 	$sql = "INSERT INTO tutorApplications
-		(recipientID, senderID, subjectID, refTeacherID, prefDayID, prefTimeBlockID, reasoningFile, isPrivate) 
+		(recipientID, senderID, subjectID, refTeacherID, prefDayID, prefTimeBlockID, reasoningFile, oneOnOne) 
 		VALUES 
-		($recipientID, " . $_SESSION['userID'] . ", $subjectID, $refTeacherID, $prefDayID, $prefTimeID, $fileName, $isPrivate)";		
+		($recipientID, " . $_SESSION['userID'] . ", $subjectID, $refTeacherID, $prefDayID, $prefTimeBlockID, $fileName, $isPrivate)";		
 
 	// will not execute, need to get the senderID first
 	//echo $sql . "<br>";

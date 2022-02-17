@@ -18,14 +18,17 @@
         <select name="recipientID">
             <?php
                 // select the data needed to display the drop-down menu for subjects
-                $sql1 = "SELECT * FROM subjects;";
+                $sql1 = "SELECT * FROM users
+                INNER JOIN subjects ON users.deptID = subjects.subjectID
+                WHERE userTypeID = 3 AND isDeptHead = 1;";
                 //echo $sql;
                 $rs = mysqli_query($dbc, $sql1);
 
                 while ($row = mysqli_fetch_array($rs)) {
-                    $subjectID = $row['subjectID'];
-                    $subjectName = $row['subjectName'];
-                    $teacherID = $row['teacherID'];
+                    $teacherID =  $row['userID'];
+                    $userName =  $row['userName'];
+                    $subjectID =  $row['subjectID'];
+                    $subjectName =  $row['subjectName'];
 
                     // echo an option value into the select field
                     echo "<option value = '$teacherID'>$subjectName</option>";
@@ -42,18 +45,18 @@
         <select name="refTeacherID">
             <?php
                 // select the data needed to display the drop-down menu for possible teachers
-                $sql1 = "SELECT * FROM users WHERE userTypeID = 2;";
+                $sql1 = "SELECT * FROM users WHERE userTypeID = 3;";
                 //echo $sql;
                 $rs = mysqli_query($dbc, $sql1);
 
                 while ($row = mysqli_fetch_array($rs)) {
-                    $userID = $row['userID'];
+                    $refTeacherID = $row['userID'];
                     $firstName = $row['firstName'];
                     $lastName = $row['lastname'];
                     $picture = $row['picture'];
 
                     // echo an option value into the select field
-                    echo "<option value = '$userID'>$lastName</option>";
+                    echo "<option value = '$userID'>$firstname . $lastName</option>";
 
                 } //end of while loop
             ?>
@@ -84,7 +87,7 @@
     <div>Preferred Time: </div>
     <!-- Drop Down Menu -->
     <div>
-        <select name="prefTimeID">
+        <select name="prefTimeBlockID">
             <?php
                 //the drop-down menu for different days
                 //Need to fix with regards to new database
@@ -99,10 +102,10 @@
     <div>Willing to work as one-on-one tutor: </div>
     <!-- checkbox for if the tutor is willing to work as one-on-one tutor -->
     <div>
-        <select name="isPrivate">
+        <select name="oneOnOne">
             <?php 
                 //checkbox for if the tutor is willing to work as 1-1 tutor
-                echo "<input type=\"checkbox\" name=\"oneOnOne\" value=\"isPrivate\">";
+                echo "<input type=\"checkbox\" name=\"oneOnOne\" value=\"oneOnOne\">";
             ?>
         </select>
     </div>
