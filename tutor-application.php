@@ -87,6 +87,7 @@
         <select name="prefTimeID">
             <?php
                 //the drop-down menu for different days
+                //Need to fix with regards to new database
                 echo "<option value = 1 >Before School</option>";
                 echo "<option value = 2 >Community Time</option>";
                 echo "<option value = 3 >After School</option>";
