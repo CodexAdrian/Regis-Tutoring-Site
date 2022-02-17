@@ -14,7 +14,7 @@
         $sql = "
             SELECT * 
             FROM users 
-            WHERE userTypeID = 3 
+            WHERE userTypeID = 2
             INNER JOIN userToTopics ON users.userID = usersToTopics.userID 
             INNER JOIN topics ON usersToTopics.topicID = topics.topicID
         ";
