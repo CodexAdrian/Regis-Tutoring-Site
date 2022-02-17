@@ -21,11 +21,6 @@
 	// exit;
 	//Need to fileIO the reasoning
 	
-	#Connecting to database server
-	$dbc = mysqli_connect("localhost","tutorDBWebUser","TutoringIsGreat","tutorDB")     //Webuser still has to be made
-		or die("Error: Cannot connect to database server");
-
-		
 	$sql = "INSERT INTO tutorApplications
 		(recipientID, senderID, subjectID, refTeacherID, prefDayID, prefTimeID, isPrivate) 
 		VALUES 
@@ -69,11 +64,11 @@
 
 	$userFirstInitial = substr($_SESSION['firstName'], 0, 0);
 
-	$to = $recipientFirstInitial . $recipientLastName . "@regis.org";
+	$to = $recipientFirstInitial . $recipientLastName . "@regis.org";		//Can be replaced by getEmail function eventually
 	$subject = "New Tutor Application from: " . $_SESSION['fullName'];
 	$message = $_SESSION['fullName'] . " has submitted a tutor application for your subject, referencing " . $refTeacherFullName . ".";	
 	$header = "From: " . $_SESSION['fullName'] . " <" . $_SESSION['username'] . "@regis.org>" . "\r\n" . 
-	"CC: ";
+				"CC: " . $refTeacherFullName . "@regis.org";
 ?>
 
 <a href="homepage.php">Go to the Home Page</a>
