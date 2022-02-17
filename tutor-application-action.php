@@ -52,10 +52,10 @@
 	";
 	$rs1 = mysqli_query($dbc, $sql1);
 	$row1 = mysqli_fetch_array($rs1);
-	$recipientFirstName = $row1[3];
-	$recipientLastName = $row1[4];
+	$recipientFirstName = $row1['firstName'];
+	$recipientLastName = $row1['lastName'];
 	$recipientFullName = $recipientFirstName . " " . $recipientLastName;
-	$recipientUsername = $row1[1];
+	$recipientUsername = $row1['userName'];
 
 	$sql2 = "
 		SELECT *
@@ -64,10 +64,10 @@
 	";
 	$rs2 = mysqli_query($dbc, $sql2);
 	$row2 = mysqli_fetch_array($rs2);
-	$refTeacherFirstName = $row2[3];
-	$refTeacherLastName	= $row2[4]; 
+	$refTeacherFirstName = $row2['firstName'];
+	$refTeacherLastName	= $row2['lastName']; 
 	$refTeacherFullName = $refTeacherFirstName . " " . $refTeacherLastName;
-	$refTeacherUsername = $row2[1];
+	$refTeacherUsername = $row2['userName'];
 
 	$userFirstInitial = substr($_SESSION['firstName'], 0, 0);
 

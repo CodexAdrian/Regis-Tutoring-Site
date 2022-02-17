@@ -3,7 +3,6 @@
         include "session.php";
         include "auth.php";
         include "nav.php";
-        include "functions.php";
 ?>
 <b class="text-slate-400 text-xl">Tutor application form:</b>
 <br>
@@ -52,12 +51,11 @@
 
                 while ($row = mysqli_fetch_array($rs)) {
                     $refTeacherID = $row['userID'];
-                    $firstName = $row['firstName'];
-                    $lastName = $row['lastname'];
-                    $picture = $row['picture'];
+                    $refTeacherFirstName = $row['firstName'];
+                    $refTeacherLastName = $row['lastname'];
 
                     // echo an option value into the select field
-                    echo "<option value = '$userID'>$firstname . $lastName</option>";
+                    echo "<option value = '$userID'>$refTeacherFirstName $refTeacherLastName</option>";
 
                 } //end of while loop
             ?>
