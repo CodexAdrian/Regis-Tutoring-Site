@@ -104,4 +104,4 @@
 	fclose($myfile);
 ?>
 
-<a href="homepage.php">Go to the Home Page</a>
+<a href="homepage.php">Go back to the Home Page</a>

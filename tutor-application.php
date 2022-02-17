@@ -1,8 +1,9 @@
 <?php
-    include "session.php";
-    include "auth.php";
-    include "nav.php";
-    include "functions.php";
+    if(isset($_SESSION['userID'])){
+        include "session.php";
+        include "auth.php";
+        include "nav.php";
+        include "functions.php";
 ?>
 <b class="text-slate-400 text-xl">Tutor application form:</b>
 <br>
@@ -129,3 +130,12 @@
 
 
 </html>
+<?php 
+}
+#Redirects users back to the index page if session times out.
+else {
+    echo "Your session has expired. Redirecting...";
+    header("Location: cs.regis.org/tutor");
+    exit();
+}
+?>

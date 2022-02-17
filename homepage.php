@@ -55,6 +55,8 @@
 <?php } 
 #Redirects users back to the index page if session times out.
 else {
-    echo "You have been timed out for inactivity. <a href='index.php'>Click here to sign in again:</a>";
+    echo "Your session has expired. Redirecting...";
+    header("Location: cs.regis.org/tutor");
+    exit();
 }
 ?>

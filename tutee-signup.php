@@ -11,15 +11,12 @@
 <form action="tutee-signup-action.php" method="post">
 
     <!-- Run $_SESSION to get the userID -->
-    <!-- Run $_POST get the subject from the calendar link -->
-    <!-- Run $_POST to get time slot from the calendar link with prefDayID and prefTimeID -->
 
     <?php
         $sql = "SELECT * FROM users WHERE userTypeID = 3 INNER JOIN userToTopics ON users.userID = usersToTopics.userID INNER JOIN topics ON usersToTopics.topicID = topics.topicID";   //Still have to create a third user type, tutor, to differentiate between teachers and tutors
         $rs = mysqli_query($dbc, $sql);
         //2/15/22 The person signing up will need to select the tutor, the day, the topic and the timeperiod at a minimum
         ///2/15/22 Will also have to pass in the person's ID and the path to extra material if they want
-        //The webpage should already take the time, date, and subject from the calendar link, so all that the user has to input now is their tutor, additional comments, and uploaded files.
         while ($row = mysqli_fetch_array($rs)) {
             $userID = $row['userID'];
             $firstName = $row['firstName'];
