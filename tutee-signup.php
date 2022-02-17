@@ -9,32 +9,46 @@
 <br>
 <br>
 
-<form action="tutee-signup-action.php" method="post">
-    <?php
-        $sql = "
-            SELECT * 
-            FROM users 
-            WHERE userTypeID = 2
-            INNER JOIN userToTopics ON users.userID = usersToTopics.userID 
-            INNER JOIN topics ON usersToTopics.topicID = topics.topicID
-        ";
-        $rs = mysqli_query($dbc, $sql);     //Need to rewrite the query
-        //2/15/22 The person signing up will need to select the tutor, the day, the topic and the timeperiod at a minimum
-        //2/15/22 Will also have to pass in the person's ID and the path to extra material if they want
-        while ($row = mysqli_fetch_array($rs)) {
-            $userID = $row['userID'];
-            $firstName = $row['firstName'];
-            $lastName = $row['lastName'];
-            $subjectID = $row['subjectID'];
-            $subjectName = $row['subjectName'];
+<form action="tutee-signup-action.php" method="post">   
+        <select name="tutorID">
 
-            echo "<b>Select a tutor:</b>";
-            echo "<br>";
-            //Echo out all the tutors and their respespective subjects in a dropdown, storing the selected tutor's ID to $selectedTutorID
-        }
-        $signupDate = $_POST['signupDate'];
-        $signupTime = $_POST['signupTime'];
-    ?>
+            <?php
+
+            $sql1 = "
+            SELECT tutorInfo.userID, users.firstName, users.lastName, topics.topicID, topicName, subjectName  
+                FROM tutorInfo
+    
+                    INNER JOIN users ON  tutorInfo.userID = users.userID
+                    INNER JOIN topics ON tutorInfo.topicID = topics.topicID
+                    INNER JOIN subjects ON topics.subjectID = subjects.subjectID
+                    INNER JOIN days ON tutorInfo.dayID = days.dayID
+                    INNER JOIN timeBlocks ON tutorInfo.timeBlockID = timeBlocks.timeBlockID
+    
+                    WHERE userTypeID = 2;  
+            ";
+
+            $rs = mysqli_query($dbc, $sql1);     //Need to rewrite the query
+            //2/15/22 The person signing up will need to select the tutor, the day, the topic and the timeperiod at a minimum
+            //2/15/22 Will also have to pass in the person's ID and the path to extra material if they want
+            
+            //for now, each tutor is linked to only one topic. So by passing the tutorID, we know what topic they are tutoring. (Need a many to many to do more topics down the road)
+            while ($row = mysqli_fetch_array($rs)) {
+                $tutorID = $row['userID'];
+                $firstName = $row['users.firstName'];
+                $lastName = $row['users.lastName'];
+                $topicID = $row['topics.topicID'];
+                $topicName = $row['topicName'];
+                $subjectName = $row['subjectName'];
+
+                echo "<option value = '$tutorID'>$firstname $lastName , $topicName </option>";
+
+                //Echo out all the tutors and their respespective subjects in a dropdown, storing the selected tutor's ID to 
+            }
+
+            ?>
+        </select>
+    
+</form>
 
     <!-- From Ethan: We should include a separate field that allows users to give tutees the option to submit additional comments on why they're signing up. This will involve adding another column to the database.
     <b>Additional comments:</b><br>
