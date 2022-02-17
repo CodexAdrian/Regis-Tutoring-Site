@@ -10,5 +10,6 @@
         ";
         $rs = mysqli_query($dbc, $sql);
         $row = mysqli_fetch_array($rs);
+        
     }
 ?>

@@ -1,22 +1,26 @@
 <?php
-    include "session.php";
-    include "auth.php";
-    include "nav.php";
-    include "functions.php";
+    if(isset($_SESSION['userID'])) {
+        include "session.php";
+        include "auth.php";
+        include "nav.php";
+        include "functions.php";
 ?>
 <b class="text-slate-400 text-xl">Tutee signup form:</b>
 <br>
 <br>
 
 <form action="tutee-signup-action.php" method="post">
-
-    <!-- Run $_SESSION to get the userID -->
-
     <?php
-        $sql = "SELECT * FROM users WHERE userTypeID = 3 INNER JOIN userToTopics ON users.userID = usersToTopics.userID INNER JOIN topics ON usersToTopics.topicID = topics.topicID";   //Still have to create a third user type, tutor, to differentiate between teachers and tutors
-        $rs = mysqli_query($dbc, $sql);
+        $sql = "
+            SELECT * 
+            FROM users 
+            WHERE userTypeID = 3 
+            INNER JOIN userToTopics ON users.userID = usersToTopics.userID 
+            INNER JOIN topics ON usersToTopics.topicID = topics.topicID
+        ";
+        $rs = mysqli_query($dbc, $sql);     //Need to rewrite the query
         //2/15/22 The person signing up will need to select the tutor, the day, the topic and the timeperiod at a minimum
-        ///2/15/22 Will also have to pass in the person's ID and the path to extra material if they want
+        //2/15/22 Will also have to pass in the person's ID and the path to extra material if they want
         while ($row = mysqli_fetch_array($rs)) {
             $userID = $row['userID'];
             $firstName = $row['firstName'];
@@ -43,3 +47,12 @@
 </form>
 </body>
 </html>
+<?php 
+}
+#Redirects users back to the index page if session times out.
+else {
+    echo "Your session has expired. Redirecting...";
+    header("Location: cs.regis.org/tutor");
+    exit();
+}
+?>

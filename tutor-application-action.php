@@ -52,10 +52,10 @@
 	";
 	$rs1 = mysqli_query($dbc, $sql1);
 	$row1 = mysqli_fetch_array($rs1);
-	$recipientFirstName = $row1[2];
-	$recipientLastName = $row1[3];
-	$recipientFirstInitial = substr($recipientFirstName, 0, 0);
+	$recipientFirstName = $row1[3];
+	$recipientLastName = $row1[4];
 	$recipientFullName = $recipientFirstName . " " . $recipientLastName;
+	$recipientUsername = $row1[1];
 
 	$sql2 = "
 		SELECT *
@@ -64,9 +64,10 @@
 	";
 	$rs2 = mysqli_query($dbc, $sql2);
 	$row2 = mysqli_fetch_array($rs2);
-	$refTeacherFirstName = $row2[2];
-	$refTeacherLastName	= $row2[3];
+	$refTeacherFirstName = $row2[3];
+	$refTeacherLastName	= $row2[4]; 
 	$refTeacherFullName = $refTeacherFirstName . " " . $refTeacherLastName;
+	$refTeacherUsername = $row2[1];
 
 	$userFirstInitial = substr($_SESSION['firstName'], 0, 0);
 
@@ -82,7 +83,7 @@
 	fwrite($myfile, $fileContents);
 	
 
-	$to = $recipientFirstInitial . $recipientLastName . "@regis.org";		//Can be replaced by getEmail function eventually
+	$to = $recipientUsername . "@regis.org";		//Can be replaced by getEmail function eventually
 	$subject = "New Tutor Application from: " . $_SESSION['fullName'];
 	$message =
 		"Dear $recipientFullName: \r\n" . 
