@@ -6,17 +6,13 @@ function getUserProfile(int $userid, String $token) {
     //TODO make $exists equal to whether or not the user exists in the table
     $exists = false;
 
-    if($exists) {
-        //TODO grab data from database
-    } else {
+    if(!$exists) {
         $userProfile1 = file_get_contents(BASE_URI. "?wstoken=$token&moodlewsrestformat=json&wsfunction=core_webservice_get_site_info");
         $userProfile2 = file_get_contents(BASE_URI. "?wstoken=$token&moodlewsrestformat=json&wsfunction=core_user_get_users_by_field&field=id&values[]=$userid");
-        $profilePicture = ;
-        $firstName;
-        $lastName;
-        $userName;
-        $isDeptHead;
-        $picture;
-        $userType;
+        //$profilePicture = file_get_contents($userProfile1->{'userpictureurl'} . );
+        $firstName = $userProfile1 -> {'firstname'};
+        $lastName = $userProfile1 -> {'lastname'};
+        $userName = $userProfile2 -> {'username'};
+        $email = $userProfile2 -> {'email'};
     }
 }
