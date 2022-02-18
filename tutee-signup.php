@@ -42,7 +42,7 @@
                 $topicName = $row['topicName'];
                 $subjectName = $row['subjectName'];
 
-                echo "<option value = '$tutorID'>$firstname $lastName , $topicName </option>";
+                echo "<option value = '$tutorID'>$firstName $lastName , $topicName </option>";
 
                 //Echo out all the tutors and their respespective subjects in a dropdown, storing the selected tutor's ID to 
             }
