@@ -8,7 +8,7 @@ $tutorID = $_POST['tutorID'];
 $eventDate = $_POST['eventDate'];
 $periodID = $_POST['periodID'];
 $additionalComments = $_POST['additionalComments'];	//Make sure this name matches what we expect from signup
-$fileName = random_bytes(20);
+$fileName = uniqid('', true);
 
 #Pulling the topicID from the database
 

@@ -18,7 +18,7 @@
 		$oneOnOne = 0;
 	}
 	$tutorReason = $_POST['tutorReason'];
-    $fileName = random_bytes(20);
+    $fileName = uniqid('', true);
 
 	// $senderID = $_GET['userID'] // also need the userID through a get variable in order to run the insert statement. This GET variable will not work right now. 
 	
