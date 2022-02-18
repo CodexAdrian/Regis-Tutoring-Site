@@ -19,11 +19,11 @@ if ($_SESSION['userID']) {
         echo "<p class=\"text-slate-400 text-2xl mb-2 font-bold\">Search the database</p>";
         echo "<br>";
 
-        #Searching tutors
+        #Searching teachers
         $sql = "
             SELECT *
             FROM users
-            WHERE userTypeID > 1
+            WHERE userTypeID = 3
             && (firstName LIKE '%$searchString%' || lastName LIKE '%$searchString%')
         ";
         $rs = mysqli_query($dbc, $sql);		
@@ -36,19 +36,52 @@ if ($_SESSION['userID']) {
             while ($row = mysqli_fetch_array($rs)) {
                 $firstName = $row['firstName'];
                 $lastName = $row['lastName'];
-                echo "<div class=\"text-white\">$firstName $lastName</div>";
+                echo "<div class=\"text-white\">Teacher: $firstName $lastName</div>";
             }
             echo "</ul><br>";
         }
 
+        #Searching tutors
+        $sq2 = "
+            SELECT firstName, lastName, topicName, subjectName, dayName, timeBlockName 
+                FROM tutorInfo
+                    INNER JOIN users ON  tutorInfo.userID = users.userID
+                    INNER JOIN topics ON tutorInfo.topicID = topics.topicID
+                    INNER JOIN subjects ON topics.subjectID = subjects.subjectID
+                    INNER JOIN days ON tutorInfo.dayID = days.dayID
+                    INNER JOIN timeBlocks ON tutorInfo.timeBlockID = timeBlocks.timeBlockID
+            
+                    WHERE userTypeID = 2 && (firstName LIKE '%$searchString%' || lastName LIKE '%$searchString%');
+        ";
+        $rs = mysqli_query($dbc, $sq2);		
+		$rows = mysqli_num_rows($rs);
+
+        if($rows > 0) {
+            echo "<p class=\"text-white text-xl\">Users ($rows results)</p>";
+
+            echo "<ul>";
+            while ($row = mysqli_fetch_array($rs)) {
+                $firstName = $row['firstName'];
+                $lastName = $row['lastName'];
+                $topicName = $row['topicName'];
+                $subjectName = $row['subjectName'];
+                $dayName = $row['dayName'];
+                $timeBlockName = $row['timeBlockName'];
+
+                echo "<div class=\"text-white\">Tutor: $firstName $lastName, $subjectName: $topicName, On $dayName during $timeBlockName </div>";
+            }
+            echo "</ul><br>";
+        }
+
+
         #Searching topics
-        $sql = "
+        $sq3 = "
             SELECT *
             FROM topics            
             INNER JOIN subjects ON topics.subjectID = subjects.subjectID
-            WHERE topicName LIKE '%$searchString%'
+            WHERE topicName LIKE '%$searchString%' OR subjectName LIKE '%$searchString%'
         ";
-        $rs = mysqli_query($dbc, $sql);
+        $rs = mysqli_query($dbc, $sq3);
 		$rows = mysqli_num_rows($rs);
 
         if($rows > 0) {
