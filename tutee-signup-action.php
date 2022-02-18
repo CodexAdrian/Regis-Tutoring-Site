@@ -107,7 +107,7 @@ fwrite($myfile, $fileContents);
 fclose($myfile);
 */
 $to = $recipientUsername . "@regis.org";		//Can be replaced by getEmail function eventually
-$subject = "New Tutee Signup from: " . $_SESSION['fullName'];
+$subject = "New Tutee Signup from " . $_SESSION['fullname'];
 $message =
 	"Dear $recipientFullName: \r\n" .
 	$_SESSION['fullname'] . " has signed up for tutoring in $topicName, from $startTime to $endTime" . $refTeacherFullName . "." . "\r\n" .
