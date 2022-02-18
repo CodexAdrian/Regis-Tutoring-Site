@@ -5,7 +5,8 @@ if(isset($_SESSION['userID'])){
         include "nav.php";
         include "api/user-api.php";
 ?>
-<b class="text-slate-400 text-xl">Tutor application form:</b>
+<div class = "m-5">
+<p class="text-white text-2xl">Tutor application form:</p>
 <br>
 <br>
 
@@ -16,7 +17,7 @@ if(isset($_SESSION['userID'])){
     <div>Subject: </div>
     <!-- Drop Down Menu -->
     <div>
-        <select name="recipientID">
+        <select class ='bg-gray-700' name="recipientID">
             <?php
                 // select the data needed to display the drop-down menu for subjects
                 $sql1 = "SELECT * FROM users
@@ -32,7 +33,7 @@ if(isset($_SESSION['userID'])){
                     $subjectName =  $row['subjectName'];
 
                     // echo an option value into the select field
-                    echo "<option value = '$teacherID'>$subjectName</option>";
+                    echo "<option class ='bg-gray-700' value = '$teacherID'>$subjectName</option>";
 
                 } //end of while loop
             ?>
@@ -43,7 +44,7 @@ if(isset($_SESSION['userID'])){
     <div>Please select a teacher as a reference: </div>
     <!-- Drop Down Menu -->
     <div>
-        <select name="refTeacherID">
+        <select class ='bg-gray-700' name="refTeacherID">
             <?php
                 // select the data needed to display the drop-down menu for possible teachers
                 $sql2 = "SELECT * FROM users WHERE userTypeID = " . UserType::Teacher . ";";
@@ -56,7 +57,7 @@ if(isset($_SESSION['userID'])){
                     $refTeacherLastName = $row['lastName'];
 
                     // echo an option value into the select field
-                    echo "<option value = $refTeacherID>$refTeacherLastName, $refTeacherFirstName</option>";
+                    echo "<option class ='bg-gray-700' value = $refTeacherID>$refTeacherLastName, $refTeacherFirstName</option>";
 
                 } //end of while loop
             ?>
@@ -71,14 +72,14 @@ if(isset($_SESSION['userID'])){
     <div>Preferred Day: </div>
     <!-- Drop Down Menu -->
     <div>
-        <select name="prefDayID">
+        <select class ='bg-gray-700' name="prefDayID">
             <?php
                 //the drop-down menu for different days
-                echo "<option value = 1 >Monday</option>";
-                echo "<option value = 2 >Tuesday</option>";
-                echo "<option value = 3 >Wednesday</option>";
-                echo "<option value = 4 >Thursday</option>";
-                echo "<option value = 5 >Friday</option>";
+                echo "<option class ='bg-gray-700' value = 1 >Monday</option>";
+                echo "<option class ='bg-gray-700' value = 2 >Tuesday</option>";
+                echo "<option class ='bg-gray-700' value = 3 >Wednesday</option>";
+                echo "<option class ='bg-gray-700' value = 4 >Thursday</option>";
+                echo "<option class ='bg-gray-700' value = 5 >Friday</option>";
 
             ?>
         </select>
@@ -87,13 +88,13 @@ if(isset($_SESSION['userID'])){
     <div>Preferred Time: </div>
     <!-- Drop Down Menu -->
     <div>
-        <select name="prefTimeBlockID">
+        <select class ='bg-gray-700' name="prefTimeBlockID">
             <?php
                 //the drop-down menu for different days
                 //Need to fix with regards to new database
-                echo "<option value = 1 >Before School</option>";
-                echo "<option value = 2 >Community Time</option>";
-                echo "<option value = 3 >After School</option>";
+                echo "<option class ='bg-gray-700' value = 1 >Before School</option>";
+                echo "<option class ='bg-gray-700' value = 2 >Community Time</option>";
+                echo "<option class ='bg-gray-700' value = 3 >After School</option>";
 
             ?>
         </select>
@@ -111,15 +112,15 @@ if(isset($_SESSION['userID'])){
     <div>Why would you like to become a tutor?</div>
     <!-- textbox for tutors to explain reasoning for becoming a tutor -->
     <div>
-            <textarea rows="5" cols="60" name="tutorReason" placeholder="Comments, concerns, area you'd like to focus on, etc."></textarea>
+            <textarea class ='bg-gray-700 text-white' rows="5" cols="60" name="tutorReason" placeholder="Comments, concerns, area you'd like to focus on, etc."></textarea>
     </div>
 
 
     <button type="submit" name="tutorApplicationForm" value="Submit Application">
-        Submit Application <i class="glyphicon glyphicon-ok"></i>
+        Submit Application <i class ='bg-gray-700' class="glyphicon glyphicon-ok"></i>
     </button>
 </form>
-
+            </div>
 
 </body>
 

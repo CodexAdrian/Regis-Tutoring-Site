@@ -30,7 +30,7 @@ if ($_SESSION['userID']) {
 		$rows = mysqli_num_rows($rs);
 
         if($rows > 0) {
-            echo "<p class=\"text-white text-xl\">Users ($rows results)</p>";
+            echo "<p class=\"text-white text-xl\">Teachers ($rows results)</p>";
 
             echo "<ul>";
             while ($row = mysqli_fetch_array($rs)) {
@@ -57,7 +57,7 @@ if ($_SESSION['userID']) {
 		$rows = mysqli_num_rows($rs);
 
         if($rows > 0) {
-            echo "<p class=\"text-white text-xl\">Users ($rows results)</p>";
+            echo "<p class=\"text-white text-xl\">Tutors ($rows results)</p>";
 
             echo "<ul>";
             while ($row = mysqli_fetch_array($rs)) {

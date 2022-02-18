@@ -6,16 +6,6 @@ if ($_SESSION['userID']) {
     include "nav.php";
     include "functions.php";
     include "api/user-api.php";
-    // commented out because it is causing page not to load
-    $sql = "SELECT * FROM users WHERE userID = $userID";
-    $rs = mysqli_query($dbc, $sql);
-    $row = mysqli_fetch_array($rs);
-    $_SESSION['userID'] = $row['userID'];
-    $_SESSION['userTypeID'] = $row['userTypeID'];
-    $_SESSION['firstName'] = $row['firstName'];
-    $_SESSION['lastName'] = $row['lastName'];
-    $_SESSION['picture'] = $row['picture'];
-
 ?>
 
 <body>
@@ -43,7 +33,7 @@ if ($_SESSION['userID']) {
 	
 	<!--<p>For reference, content for this example is based on this reference at <a href="https://www.w3schools.com/php/php_file_upload.asp">W3Schools</a></p>
     -->
-    
+
 </body>
 </html>
 

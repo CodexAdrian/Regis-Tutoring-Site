@@ -6,7 +6,8 @@ if (isset($_SESSION['userID'])) {
     include "functions.php";
     include "api/user-api.php"
 ?>
-    <b class="text-slate-400 text-xl">Tutee signup form:</b>
+    <div class = "m-5">
+    <p class="text-white text-2xl">Tutee signup form:</p>
     <br>
     <br>
 
@@ -77,7 +78,7 @@ if (isset($_SESSION['userID'])) {
             //echo "$displayedStartTime";
             //if{}
             //else{}
-            
+
             echo "<option class ='bg-gray-700' value ='$periodID'>$startTime-$endTime,  $timeBlockName </option>";
 
         }
@@ -131,6 +132,7 @@ if (isset($_SESSION['userID'])) {
         </button>
 
     </form>
+    </div>
     </body>
 
     </html>
