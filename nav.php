@@ -18,6 +18,7 @@ $userID = $_SESSION['userID'];
                 <p class="text-white ml-3 mr-60">Search</p></div>
             <?php
             //TODO Fix button to be full width
+            //TODO FIX NAV PROFILE CHANGE BAR
             ?>
             <div class="rounded-3xl p-2 mt-auto mb-auto ml-10 flex"
                  style="background-color: #D61341"><p class="text-white ml-3"><a href="tutor-application.php">Tutor Application</a></p><span
@@ -35,6 +36,8 @@ $userID = $_SESSION['userID'];
         <div class="flex flex-row">
             <span class="material-icons text-white text-3xl p-4">notifications</span>
             <img src="<?= $_SESSION['picture'] ?>>" class="h-12 m-auto mr-3 rounded-3xl" alt="logo"/>
+            
+            <!--- <php? echo " 'uploadedProfilePictures/' . $_SESSION['picture']"; ?> -->
         </div>
     </div>
     <div class="flex flex-row h-full">
