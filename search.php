@@ -5,6 +5,7 @@ if ($_SESSION['userID']) {
     include "auth.php";
     include "nav.php";
     include "functions.php";
+    $userID = $_SESSION['userID'];
 ?>
 <div class = "m-5">
     <p class="text-white text-2xl">Search the Tutor Database</p>
@@ -12,11 +13,24 @@ if ($_SESSION['userID']) {
     <br>
 
 
+<!--
+<div class = "m-5">
+<p class="text-white text-2xl">Tutoring Info</p>
+    <br>
+    <br>
+</div>
+-->
+
 <form action = "search.php" method = "post">
-    <input name = "searchString" size = "20" placeholder = "Search the database">
+    <input name = "searchString" size = "20" placeholder = "Search the database1">
     <button type="submit" name="search" value="searchDatabase">
 </form>
+<<<<<<< Updated upstream
 </div>
+=======
+
+
+>>>>>>> Stashed changes
 <?php
     if(isset($_POST['searchString'])) {
         $searchString = $_POST['searchString'];
@@ -29,7 +43,7 @@ if ($_SESSION['userID']) {
             SELECT *
             FROM users
             WHERE userTypeID = 3
-            && (firstName LIKE '%$searchString%' || lastName LIKE '%$searchString%')
+            && (firstName LIKE '%$searchString%' OR lastName LIKE '%$searchString%')
         ";
         $rs = mysqli_query($dbc, $sql);		
 		$rows = mysqli_num_rows($rs);
@@ -56,7 +70,8 @@ if ($_SESSION['userID']) {
                     INNER JOIN days ON tutorInfo.dayID = days.dayID
                     INNER JOIN timeBlocks ON tutorInfo.timeBlockID = timeBlocks.timeBlockID
             
-                    WHERE userTypeID = 2 && (firstName LIKE '%$searchString%' || lastName LIKE '%$searchString%');
+                    WHERE userTypeID = 2 && (firstName LIKE '%$searchString%' OR lastName LIKE '%$searchString%' OR topicName LIKE '%$searchString%' OR subjectName LIKE '%$searchString%'
+                    OR dayName LIKE '%$searchString%' OR timeBlockName LIKE '%$searchString%');
         ";
         $rs = mysqli_query($dbc, $sq2);		
 		$rows = mysqli_num_rows($rs);
@@ -100,7 +115,8 @@ if ($_SESSION['userID']) {
             }
             echo "</ul><br>";
         }
-        echo "<a href = \"index.php\">Return to the homepage</a>";
+
+       
     }
 }
 else {
@@ -108,3 +124,4 @@ else {
     exit();
 }
 ?>
+<a href = "homepage.php?userID=<?php echo $userID; ?>">Return to the Homepage<span class="material-icons text-white text-3xl pb-10">home</span></a>
