@@ -110,13 +110,13 @@ $to = $recipientUsername . "@regis.org";		//Can be replaced by getEmail function
 $subject = "New Tutee Signup from: " . $_SESSION['fullName'];
 $message =
 	"Dear $recipientFullName: \r\n" .
-	$_SESSION['fullName'] . " has signed up for tutoring in $topicName, from $startTime to $endTime" . $refTeacherFullName . "." . "\r\n" .
+	$_SESSION['fullname'] . " has signed up for tutoring in $topicName, from $startTime to $endTime" . $refTeacherFullName . "." . "\r\n" .
 	"Here is their reasoning: $additionalComments" . "\r\n" .
 	"Don't be late!"
 ;
 $header =
-	"From: " . $_SESSION['fullName'] . " <" . $_SESSION['username'] . "@regis.org>" . "\r\n" .
-	"CC: " . $_SESSION['fullName'] . "@regis.org";
+	"From: " . $_SESSION['fullname'] . " <" . $_SESSION['username'] . "@regis.org>" . "\r\n" .
+	"CC: " . $_SESSION['fullname'] . "@regis.org";
 
 if (mail($to, $subject, $message, $headers)) {
 	//echo "Your application has successfully been submitted.";
