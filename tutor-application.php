@@ -1,6 +1,6 @@
 <?php
-    if(isset($_SESSION['userID'])){
-        include "session.php";
+include "session.php";
+if(isset($_SESSION['userID'])){
         include "auth.php";
         include "nav.php";
 ?>
@@ -20,7 +20,7 @@
                 // select the data needed to display the drop-down menu for subjects
                 $sql1 = "SELECT * FROM users
                 INNER JOIN subjects ON users.deptID = subjects.subjectID
-                WHERE userTypeID = ". UserType::Teacher ." AND isDeptHead = 1;";
+                WHERE userTypeID = ". UserType::Teacher ." && isDeptHead = 1;";
                 //echo $sql;
                 $rs = mysqli_query($dbc, $sql1);
 
