@@ -22,13 +22,63 @@ abstract class SubjectType {
     const PhysicalEducation = 10;
 }
 
+function getSubjectDecoration($subjectTypeId) {
+    $color = '#FFFFFF';
+    $icon = 'warning';
+    switch ($subjectTypeId) {
+        case SubjectType::Math :
+            $color = '#FF8F28';
+            $icon = 'calculate';
+            break;
+        case SubjectType::English :
+            $color = '#F8FF3B';
+            $icon = 'edit_note';
+            break;
+        case SubjectType::Science :
+            $color = '#009AA3';
+            $icon = 'tungsten';
+            break;
+        case SubjectType::Language :
+            $color = '#808080';
+            $icon = 'translate';
+            break;
+        case SubjectType::History :
+            $color = '#08A827';
+            $icon = 'history_edu';
+            break;
+        case SubjectType::Theology :
+            $color = '#ED4253';
+            $icon = 'local_hospital';
+            break;
+        case SubjectType::Guidance :
+            $color = '#FFF700';
+            $icon = 'child_care';
+            break;
+        case SubjectType::ComputerScience :
+            $color = '#1800B5';
+            $icon = 'settings_suggest';
+            break;
+        case SubjectType::Art :
+            $color = '#FF00BF';
+            $icon = 'brush';
+            break;
+        case SubjectType::PhysicalEducation :
+            $color = '#000000';
+            $icon = 'sports_football';
+            break;
+    }
+
+    return array("color" => $color, "icon" => $icon);
+}
+
 class UserProfile {
-    public String $firstName;
-    public String $lastName;
-    public String $userName;
+    public string $firstName;
+    public string $lastName;
+    public string $userName;
     public int $id;
 
-    public function __construct($firstName, $lastName, $userName, $id) {
+    public function __construct($firstName, $lastName, $userName, $id)
+    {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->userName = $userName;
@@ -36,7 +86,7 @@ class UserProfile {
     }
 }
 
-function getUserProfile(int $userid, String $token): UserProfile | null {
+function getUserProfile(int $userid, string $token): UserProfile|null {
     $dbc = mysqli_connect("cs.regis.org", "aortiz22", "38271038", "tutor");
     $sql = "
                 select * 
@@ -48,12 +98,12 @@ function getUserProfile(int $userid, String $token): UserProfile | null {
     //echo $rs;
     if (!$rs) {
         //I was told this was not necessary after i finished this -_-
-        $userProfile1 = file_get_contents(BASE_URI. "?wstoken=$token&moodlewsrestformat=json&wsfunction=core_webservice_get_site_info");
-        $userProfile2 = file_get_contents(BASE_URI. "?wstoken=$token&moodlewsrestformat=json&wsfunction=core_user_get_users_by_field&field=id&values[]=$userid");
+        $userProfile1 = file_get_contents(BASE_URI . "?wstoken=$token&moodlewsrestformat=json&wsfunction=core_webservice_get_site_info");
+        $userProfile2 = file_get_contents(BASE_URI . "?wstoken=$token&moodlewsrestformat=json&wsfunction=core_user_get_users_by_field&field=id&values[]=$userid");
         //$profilePicture = file_get_contents($userProfile1->{'userpictureurl'} . );
-        $firstName = $userProfile1 -> {'firstname'};
-        $lastName = $userProfile1 -> {'lastname'};
-        $userName = $userProfile2 -> {'username'};
+        $firstName = $userProfile1->{'firstname'};
+        $lastName = $userProfile1->{'lastname'};
+        $userName = $userProfile2->{'username'};
 
         $sql = "
         insert into users (userID, firstName, lastName, userName, extraID)

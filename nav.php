@@ -8,7 +8,7 @@
     <title>Tutoring Homepage</title>
 </head>
 <body class="m-0 text-white" style="background-color: #20182D">
-<div class="flex flex-col">
+<div class="flex flex-col h-full">
     <div class="flex justify-between border-gray-700 border-b-2"><!-- Top Nav -->
         <div class="flex flex-row">
             <div><span class="material-icons text-white text-3xl p-4 border-gray-700 border-r-2">menu</span></div>
@@ -24,16 +24,13 @@
             <img src="Logo.png" class="h-12 m-auto mr-3 rounded-3xl" alt="logo"/>
         </div>
     </div>
-    <div class="flex flex-row">
-        <div class="flexjustify-between p-4 pt-5 border-gray-700 border-r-2 overflow-hidden h-full">
-            <div class="flex flex-col">
-                <a href = 'homepage.php'><span class="material-icons text-white text-3xl pb-10">home</span></a>''
-                <a href = 'moodle.regis.org'><span class="material-icons text-white text-3xl pb-10">school</span></a>
+    <div class="flex flex-row h-full">
+        <div class="flex justify-between p-4 pt-5 border-gray-700 border-r-2 h-full">
+            <div class="flex flex-col h-full">
+                <span class="material-icons text-white text-3xl pb-10">home</span>
+                <span class="material-icons text-white text-3xl pb-10">school</span>
                 <span class="material-icons text-white text-3xl pb-10">account_circle</span>
                 <span class="material-icons text-white text-3xl pb-10">event</span>
-            </div>
-            <div class="mt-auto">
-                <p>H</p>
             </div>
         </div>
 
