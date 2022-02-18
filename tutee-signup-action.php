@@ -4,12 +4,11 @@ include "session.php";
 include "functions.php";
 
 # Write form post variables into local variables
-$eventID = $_POST[''];
-$tutorID = $_POST[''];
-$eventDate = $_POST[''];
-$topicID = $_POST[''];
-$periodID = $_POST[''];
-$additionalComments = $_POST[''];	//Make sure this name matches what we expect from signup
+$tutorID = $_POST['tutorID'];
+$eventDate = $_POST['eventDate'];
+$topicID = $_POST['topicID'];
+$periodID = $_POST['periodID'];
+$additionalComments = $_POST['additionalComments'];	//Make sure this name matches what we expect from signup
 $filename = random_bytes(20);
 
 
@@ -17,15 +16,13 @@ $filename = random_bytes(20);
 $dbc = mysqli_connect("localhost", "tutorDBWebUser", "TutoringIsGreat", "tutorDB")     //Webuser still has to be made
 	or die("Error: Cannot connect to database server");
 
-
+#Inserting the entry into the table
 $sql = "
 	INSERT INTO calendarEvents
-	(eventID, tutorID, studentID, eventDate, topicID, periodID, extraMaterial) 
+	(tutorID, studentID, eventDate, topicID, periodID, extraMaterial) 
 	VALUES 
-	($eventID, $tutorID," . $_SESSION['userID'] . ", $eventDate, $topicID, $periodID, $fileName)
+	($tutorID," . $_SESSION['userID'] . ", $eventDate, $topicID, $periodID, $fileName)
 ";
-
-// insert the row into the table
 $rs = mysqli_query($dbc, $sql);
 
 if ($rs) {
@@ -70,9 +67,12 @@ $endTime = $row3['endTime'];
 
 $userFirstInitial = substr($_SESSION['firstName'], 0, 0);
 
+#Establishing time of request
 $fullDate = getdate();
 $date = $fullDate['mon'] . "/" . $fullDate['mday'] . "/" . $fullDate['year'];
 $time = $fullDate['hours'] . ":" . $fullDate['minutes'] . ":" . $fullDate['seconds'];
+
+#Creating file contents
 $fileContents =
 	"From: " . $_SESSION['fullname'] . "at $date $time" . "\r\n" .
 	"To: $recipientFullName, signing up for tutoring for $topicName from $startTime to $endTime" . "\r\n" .

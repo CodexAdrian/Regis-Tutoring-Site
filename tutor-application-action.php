@@ -31,8 +31,7 @@
 		(recipientID, senderID, subjectID, refTeacherID, prefDayID, prefTimeBlockID, reasoningFile, oneOnOne) 
 		VALUES 
 		($recipientID,". $_SESSION['userID'].", $subjectID, $refTeacherID, $prefDayID, $prefTimeBlockID, $fileName, $oneOnOne)
-	";		
-	//Why doesn't this userID work?
+	";
 
 	#Inserting the row into the table
 	$rs = mysqli_query($dbc, $sql);
