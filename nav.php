@@ -16,6 +16,9 @@ $userID = $_SESSION['userID'];
             <div class="rounded-3xl p-2 mt-auto mb-auto ml-10 flex"
                  style="background-color: #575271"><a href = "search.php"><span class="material-icons text-white ml-2">search</span></a>
                 <p class="text-white ml-3 mr-60">Search</p></div>
+            <?php
+            //TODO Fix button to be full width
+            ?>
             <div class="rounded-3xl p-2 mt-auto mb-auto ml-10 flex"
                  style="background-color: #D61341"><p class="text-white ml-3"><a href="tutor-application.php">Tutor Application</a></p><span
                         class="material-icons text-white ml-2 mr-3">school</span></div>
@@ -31,7 +34,7 @@ $userID = $_SESSION['userID'];
         </div>
         <div class="flex flex-row">
             <span class="material-icons text-white text-3xl p-4">notifications</span>
-            <img src="Logo.png" class="h-12 m-auto mr-3 rounded-3xl" alt="logo"/>
+            <img src="<?= $_SESSION['picture'] ?>>" class="h-12 m-auto mr-3 rounded-3xl" alt="logo"/>
         </div>
     </div>
     <div class="flex flex-row h-full">

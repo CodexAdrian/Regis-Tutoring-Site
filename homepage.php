@@ -15,7 +15,7 @@ if ($_SESSION['userID']) {
     $_SESSION['userTypeID'] = $row['userTypeID'];
     $_SESSION['firstName'] = $row['firstName'];
     $_SESSION['lastName'] = $row['lastName'];
-    $_SESSION['picture'] = $row['picture'];
+    $_SESSION['picture'] = $row['picture'] ?? 'default-profile.png';
     $_SESSION['fullname'] = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
     ?>
     <div class="m-5 w-full">
