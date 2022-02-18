@@ -18,7 +18,7 @@
 		$oneOnOne = 0;
 	}
 	$tutorReason = $_POST['tutorReason'];
-	$filename = random_bytes(20);
+    $fileName = random_bytes(20);
 
 	// $senderID = $_GET['userID'] // also need the userID through a get variable in order to run the insert statement. This GET variable will not work right now. 
 	
@@ -30,7 +30,7 @@
 		INSERT INTO tutorApplications
 		(recipientID, senderID, subjectID, refTeacherID, prefDayID, prefTimeBlockID, reasoningFile, oneOnOne) 
 		VALUES 
-		($recipientID, $_SESSION['userID'], $subjectID, $refTeacherID, $prefDayID, $prefTimeBlockID, $fileName, $isPrivate)
+		($recipientID,". $_SESSION['userID'].", $subjectID, $refTeacherID, $prefDayID, $prefTimeBlockID, $fileName, $oneOnOne)
 	";		
 	//Why doesn't this userID work?
 

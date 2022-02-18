@@ -46,8 +46,7 @@ if ($_SESSION['userID']) {
         <?php
     }#Redirects users back to the index page if session times out.
 else {
-    echo "Your session has expired. Redirecting...";
-    header("Location: cs.regis.org/tutor");
+    header("Location: index.php");
     exit();
 }
 ?>

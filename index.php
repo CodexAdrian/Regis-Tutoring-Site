@@ -12,7 +12,7 @@
 
 <span class="material-icons text-8xl" style="color: #D61341">school</span>
 <p class="text-slate-400 text-xl mb-2">Regis Tutor Hub</p>
-<form class="flex flex-col" action="test.php" method="post">
+<form class="flex flex-col" action="login-form.php" method="post">
     <label>
         <input type="text" class="rounded-full bg-slate-600 p-2 pl-4 m-1 text-white" autocomplete="username" placeholder="Username" name="username">
     </label>

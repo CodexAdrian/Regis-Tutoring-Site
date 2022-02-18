@@ -22,7 +22,7 @@
 		INSERT INTO calendarEvents
 		(eventID, tutorID, studentID, eventDate, topicID, periodID, extraMaterial) 
 		VALUES 
-		($eventID, $tutorID, $_SESSION['userID'], $eventDate, $topicID, $periodID, $fileName)
+		($eventID, $tutorID,". $_SESSION['userID'].", $eventDate, $topicID, $periodID, $fileName)
 	";	
 	
 	// insert the row into the table
