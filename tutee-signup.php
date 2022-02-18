@@ -112,10 +112,17 @@ if (isset($_SESSION['userID'])) {
 
         ?>
         </select>
+    
+    <div>Any comments or additional info?</div>
+    <!-- textbox for kids to add some context -->
+    <div>
+        <textarea name="additionalComments" class ='bg-gray-700 text-white' rows="5" cols="60" name="tuteeSignupComments" placeholder="Comments, concerns, area you'd like to focus on, etc."></textarea>
+    </div>
 
-            <button type=" submit" name="tuteeSignup" value="Sign up">
-            Sign up <i class="glyphicon glyphicon-ok"></i>
-            </button>
+        <button type=" submit" name="tuteeSignup" value="Sign up">
+        Sign up <i class="glyphicon glyphicon-ok"></i>
+        </button>
+
     </form>
     </body>
 

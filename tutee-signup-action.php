@@ -8,7 +8,7 @@ $tutorID = $_POST['tutorID'];
 $eventDate = $_POST['eventDate'];
 $periodID = $_POST['periodID'];
 $additionalComments = $_POST['additionalComments'];	//Make sure this name matches what we expect from signup
-$filename = random_bytes(20);
+$fileName = random_bytes(20);
 
 #Pulling the topicID from the database
 
@@ -29,16 +29,21 @@ $sql0 = "
 
 $rs0 = mysqli_query($dbc, $sql0);
 $row0 = mysqli_fetch_array($rs0);
-$topicID = $row1['tiopicID'];
+$topicID = $row0['topicID'];
 
+//" . $_SESSION['userID'] . "
+echo "test1";
 
 #Inserting the entry into the table
 $sql = "
 	INSERT INTO calendarEvents
 	(tutorID, studentID, eventDate, topicID, periodID, extraMaterial) 
 	VALUES 
-	($tutorID," . $_SESSION['userID'] . ", $eventDate, $topicID, $periodID, $fileName)
+	($tutorID, {$_SESSION['userID']}, '$eventDate', $topicID, $periodID, '$fileName')
 ";
+
+echo "$sql";
+
 $rs = mysqli_query($dbc, $sql);
 
 if ($rs) {
@@ -47,11 +52,12 @@ if ($rs) {
 	echo "Record Insertion Failed!";
 }
 
+
 #Querying for recipient information
 $sql1 = "
 	SELECT * 
 	FROM users 
-	WHERE userID = $recipientID
+	WHERE userID = '$tutorID'
 ";
 $rs1 = mysqli_query($dbc, $sql1);
 $row1 = mysqli_fetch_array($rs1);
