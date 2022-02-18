@@ -112,10 +112,6 @@ if (isset($_SESSION['userID'])) {
 
         ?>
         </select>
-    
-    
-
-</form> 
 
             <button type=" submit" name="tuteeSignup" value="Sign up">
             Sign up <i class="glyphicon glyphicon-ok"></i>

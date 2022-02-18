@@ -6,15 +6,31 @@ include "functions.php";
 # Write form post variables into local variables
 $tutorID = $_POST['tutorID'];
 $eventDate = $_POST['eventDate'];
-$topicID = $_POST['topicID'];
 $periodID = $_POST['periodID'];
 $additionalComments = $_POST['additionalComments'];	//Make sure this name matches what we expect from signup
 $filename = random_bytes(20);
 
+#Pulling the topicID from the database
 
-#Connecting to database server
-$dbc = mysqli_connect("localhost", "tutorDBWebUser", "TutoringIsGreat", "tutorDB")     //Webuser still has to be made
-	or die("Error: Cannot connect to database server");
+$sql0 = "
+	SELECT topics.topicID 
+	FROM tutorInfo
+
+	INNER JOIN users ON  tutorInfo.userID = users.userID
+	INNER JOIN topics ON tutorInfo.topicID = topics.topicID
+	INNER JOIN subjects ON topics.subjectID = subjects.subjectID
+	INNER JOIN days ON tutorInfo.dayID = days.dayID
+	INNER JOIN timeBlocks ON tutorInfo.timeBlockID = timeBlocks.timeBlockID
+
+	WHERE users.userID = '$tutorID';  
+";
+
+#writing topicID into a variable
+
+$rs0 = mysqli_query($dbc, $sql0);
+$row0 = mysqli_fetch_array($rs0);
+$topicID = $row1['tiopicID'];
+
 
 #Inserting the entry into the table
 $sql = "
