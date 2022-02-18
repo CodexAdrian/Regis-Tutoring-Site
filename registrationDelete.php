@@ -2,7 +2,8 @@
 <?php
 include "session.php";
 #Checks if the session is still maintained
-if ($_SESSION['userID']) {
+$userID = $_SESSION['userID'];
+if ($userID) {
     include "auth.php";
     include "nav.php";
     include "functions.php";
@@ -18,7 +19,7 @@ if ($_SESSION['userID']) {
     // delete the row from the table
     $rs = mysqli_query($dbc, $sql);
 
-    header("Location: index.php");
+    header("Location: homepage.php?userID=$userID");
 }
 ?>
 

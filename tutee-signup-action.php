@@ -32,7 +32,7 @@ $row0 = mysqli_fetch_array($rs0);
 $topicID = $row0['topicID'];
 
 //" . $_SESSION['userID'] . "
-echo "test2  ";
+//echo "test2  ";
 
 #Inserting the entry into the table
 $sqlInsert = "
@@ -42,12 +42,12 @@ $sqlInsert = "
 	('$tutorID', '{$_SESSION['userID']}', '$eventDate', '$topicID', '$periodID', '$fileName')
 ";
 
-echo "$sqlInsert";
+//echo "$sqlInsert";
 
 $rs = mysqli_query($dbc, $sqlInsert);
 
 if ($rs) {
-	echo "Record Successfully Inserted!";
+	//echo "Record Successfully Inserted!";
 } else {
 	echo "Record Insertion Failed!";
 }
@@ -100,12 +100,12 @@ $fileContents =
 	"To: $recipientFullName, signing up for tutoring for $topicName from $startTime to $endTime" . "\r\n" .
 	$additionalComments
 ;
-
+/*
 $myfile = fopen("tutee-signups/$fileName.txt", "w") or die("Unable to generate file!");		//Double check that this file declaration works
 fwrite($myfile, $fileContents);
 
 fclose($myfile);
-
+*/
 $to = $recipientUsername . "@regis.org";		//Can be replaced by getEmail function eventually
 $subject = "New Tutee Signup from: " . $_SESSION['fullName'];
 $message =
@@ -119,12 +119,11 @@ $header =
 	"CC: " . $_SESSION['fullName'] . "@regis.org";
 
 if (mail($to, $subject, $message, $headers)) {
-	echo "Your application has successfully been submitted.";
+	//echo "Your application has successfully been submitted.";
 } else {
 	echo "Something went wrong.";
 }
 
+header("Location: homepage.php?userID=".$_SESSION['userID']);
 
 ?>
-
-<a href="homepage.php">Go back to the Home Page</a>

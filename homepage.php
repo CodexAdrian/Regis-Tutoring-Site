@@ -21,7 +21,7 @@ if ($_SESSION['userID']) {
     <div class="m-5 w-full">
         <p class="text-2xl m-5 max-w-full border-b-2 pb-2 border-gray-500">Welcome Back, <?= $_SESSION['firstName'] ?>
             👋</p>
-        <p class="text-xl m-5 mb-0">See Tutors Availability</p>
+        <p class="text-xl m-5 mb-0">See Tutors Availability (WIP)</p>
         <div class="grid grid-cols-5 w-full h-min">
             <?php
             $sql = "
@@ -58,7 +58,7 @@ if ($_SESSION['userID']) {
                 INNER JOIN users u on calendarEvents.tutorID = u.userID
                 INNER JOIN periods p on calendarEvents.periodID = p.periodID
                 INNER JOIN topics t on calendarEvents.topicID = t.topicID
-                WHERE studentID = 103 && eventDate = DATE(SYSDATE());
+                WHERE studentID = $userID && eventDate = DATE(SYSDATE());
                 ";
             $rs = mysqli_query($dbc, $eventQuery);
             while ($row = mysqli_fetch_array($rs)) {
