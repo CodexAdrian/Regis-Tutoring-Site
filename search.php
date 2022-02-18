@@ -16,7 +16,7 @@ if ($_SESSION['userID']) {
 
 <form action = "search.php" method = "post">
     <input class ='bg-gray-700' name = "searchString" size = "20" placeholder = "Search the database">
-    <button type="submit" name="search" value="searchDatabase">
+    <button class="text-white text-2xl" type="submit" name="search" value="searchDatabase">
 </form>
 
 

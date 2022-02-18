@@ -1,9 +1,18 @@
 <?php
+	include "session.php";
+	#Checks if the session is still maintained
+	if ($_SESSION['userID']) {
+		include "auth.php";
+		include "nav.php";
+		include "functions.php";
+		$userID = $_SESSION['userID'];
+
 	$target_dir = "/atcs/tutor/uploadedProfilePictures/";
 	$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 	$uploadOk = 1;
 	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
+	
 	// Check if image file is a actual image or fake image
 	if(isset($_POST["submit"])) {
 	  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -35,6 +44,21 @@
 	  $uploadOk = 0;
 	}
 
+	//Write it into the usersTable
+
+	$pictureName = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
+
+	$sql1 = "
+				UPDATE `tutor`.`users` 
+				SET `picture` = '$pictureName' 
+				WHERE (`userID` = '$userID');  
+            ";
+
+            $rs = mysqli_query($dbc, $sql1); 
+
+	echo $sql1;
+
+
 	// Check if $uploadOk is set to 0 by an error
 	if ($uploadOk == 0) {
 	  echo "Sorry, your file was not uploaded.";
@@ -45,5 +69,8 @@
 	  } else {
 		echo "Sorry, there was an error uploading your file.";
 	  }
+
+	}
+
 	}
 ?>
