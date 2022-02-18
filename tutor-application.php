@@ -66,7 +66,7 @@ if(isset($_SESSION['userID'])){
 
     <!-- From Ethan: We should include a separate field that allows users to give tutees the option to submit additional comments on why they're signing up. This will involve adding another column to the database.
     <b>Additional comments:</b><br>
-    <textarea rows="5" cols="60" name="tuteeSignupComments" placeholder="Comments, concerns, area you'd like to focus on, etc."></textarea> 
+    <textarea rows="5" cols="60" name="tuteeSignupComments" placeholder="I would like to be a tutor because..."></textarea> 
     -->
 
     <div>Preferred Day: </div>
@@ -112,7 +112,7 @@ if(isset($_SESSION['userID'])){
     <div>Why would you like to become a tutor?</div>
     <!-- textbox for tutors to explain reasoning for becoming a tutor -->
     <div>
-            <textarea class ='bg-gray-700 text-white' rows="5" cols="60" name="tutorReason" placeholder="Comments, concerns, area you'd like to focus on, etc."></textarea>
+            <textarea class ='bg-gray-700 text-white' rows="5" cols="60" name="tutorReason" placeholder="I would like to become a tutor because..."></textarea>
     </div>
 
 
