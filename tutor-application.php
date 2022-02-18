@@ -3,6 +3,7 @@ include "session.php";
 if(isset($_SESSION['userID'])){
         include "auth.php";
         include "nav.php";
+        include "api/user-api.php";
 ?>
 <b class="text-slate-400 text-xl">Tutor application form:</b>
 <br>
@@ -20,7 +21,7 @@ if(isset($_SESSION['userID'])){
                 // select the data needed to display the drop-down menu for subjects
                 $sql1 = "SELECT * FROM users
                 INNER JOIN subjects ON users.deptID = subjects.subjectID
-                WHERE userTypeID = ". UserType::Teacher ." && isDeptHead = 1;";
+                WHERE userTypeID = ". UserType::Teacher ." && isDeptHead = 1 && subjectID < 7;";
                 //echo $sql;
                 $rs = mysqli_query($dbc, $sql1);
 
@@ -45,17 +46,17 @@ if(isset($_SESSION['userID'])){
         <select name="refTeacherID">
             <?php
                 // select the data needed to display the drop-down menu for possible teachers
-                $sql1 = "SELECT * FROM users WHERE userTypeID = " . UserType::Teacher . ";";
+                $sql2 = "SELECT * FROM users WHERE userTypeID = " . UserType::Teacher . ";";
                 //echo $sql;
-                $rs = mysqli_query($dbc, $sql1);
+                $rs = mysqli_query($dbc, $sql2);
 
                 while ($row = mysqli_fetch_array($rs)) {
                     $refTeacherID = $row['userID'];
                     $refTeacherFirstName = $row['firstName'];
-                    $refTeacherLastName = $row['lastname'];
+                    $refTeacherLastName = $row['lastName'];
 
                     // echo an option value into the select field
-                    echo "<option value = '$userID'>$refTeacherFirstName $refTeacherLastName</option>";
+                    echo "<option value = $refTeacherID>$refTeacherLastName, $refTeacherFirstName</option>";
 
                 } //end of while loop
             ?>
@@ -101,24 +102,20 @@ if(isset($_SESSION['userID'])){
     <div>Willing to work as one-on-one tutor: </div>
     <!-- checkbox for if the tutor is willing to work as one-on-one tutor -->
     <div>
-        <select name="oneOnOne">
             <?php 
                 //checkbox for if the tutor is willing to work as 1-1 tutor
                 echo "<input type=\"checkbox\" name=\"oneOnOne\" value=\"oneOnOne\">";
             ?>
-        </select>
     </div>
 
     <div>Why would you like to become a tutor?</div>
     <!-- textbox for tutors to explain reasoning for becoming a tutor -->
     <div>
-        <select name="tutorReason">
-            <textarea rows="5" cols="60" name="tuteeSignupComments" placeholder="Comments, concerns, area you'd like to focus on, etc."></textarea>
-        </select>
+            <textarea rows="5" cols="60" name="tutorReason" placeholder="Comments, concerns, area you'd like to focus on, etc."></textarea>
     </div>
 
 
-    <button type="submit" name="tutorApplicaitonForm" value="Submit Application">
+    <button type="submit" name="tutorApplicationForm" value="Submit Application">
         Submit Application <i class="glyphicon glyphicon-ok"></i>
     </button>
 </form>

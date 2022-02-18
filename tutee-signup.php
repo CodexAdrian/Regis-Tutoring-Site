@@ -73,6 +73,9 @@ if (isset($_SESSION['userID'])) {
             $endTime = $row['endTime'];
             $timeBlockName = $row['timeBlockName'];
 
+            //if{}
+            //else{}
+
             echo "<option class ='bg-gray-700' value ='$periodID'>$startTime-$endTime,  $timeBlockName </option>";
 
         }
@@ -102,9 +105,11 @@ if (isset($_SESSION['userID'])) {
             $index++;
             $schoolDate = $row['schoolDate'];
             $letterDay = $row['letterDay'];
-
-            echo "<option class ='bg-gray-700' value ='$schoolDate'>$schoolDate, $letterDay</option>";
+            $displayedDate = (new DateTime($row['schoolDate']))->format('D, F d');
             
+            echo "<option class ='bg-gray-700' value ='$schoolDate'>$displayedDate, $letterDay</option>";
+
+
             if ($index >= 5){
                 break;
             }
@@ -116,7 +121,7 @@ if (isset($_SESSION['userID'])) {
     <div>Any comments or additional info?</div>
     <!-- textbox for kids to add some context -->
     <div>
-        <textarea name="additionalComments" class ='bg-gray-700 text-white' rows="5" cols="60" name="tuteeSignupComments" placeholder="Comments, concerns, area you'd like to focus on, etc."></textarea>
+        <textarea name="additionalComments" class ='bg-gray-700 text-white' rows="5" cols="60" name="tuteeSignupComments" placeholder="I would like to be a tutor because..."></textarea>
     </div>
 
         <button type=" submit" name="tuteeSignup" value="Sign up">
