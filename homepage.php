@@ -74,14 +74,17 @@ if ($_SESSION['userID']) {
                 $iconDeco = getSubjectDecoration($subjectID);
                 if(!$picture) $picture = 'default-profile.png';
                 ?>
-                <div class="flex flex-col w-full justify-between">
-                    <div class="flex flex-row">
-                        <img class="rounded-full w-min" src="<?= $picture ?>" alt="Profile Picture"/>
-                        <p><?= $tutorName ?> <span class="material-icons m-auto " style="color: <?= $iconDeco['color']?>"><?= $iconDeco['icon']?></span></p>
-
+                <div class="flex flex-row w-full justify-between m-3">
+                    <div class="flex flex-row ">
+                        <img class="rounded-full w-16 h-16" src="<?= $picture ?>" alt="Profile Picture"/>
+                        <div class="flex flex-col ml-3 mt-auto mb-auto">
+                            <p class="flex text-lg"><?= $tutorName ?> <span class="material-icons ml-2 m-auto" style="color: <?= $iconDeco['color']?>"><?= $iconDeco['icon']?></span></p>
+                            <p class="text-md text-slate-400"><?= $startTime . " - " . $endTime ?></p>
+                        </div>
                     </div>
-                    <div>
-
+                    <div class="flex">
+                        <a href="mailto:<?= $email ?>?subject=Tutor help&body=Hi<?= $row['firstName'] ?>"><span class="material-icons text-white">email</span></a>
+                        <a onclick="return confirm('Are you sure you would like to cancel your meeting with <?= $tutorName ?>?')" href="registrationDelete.php?eventID=<?=$eventID?>"><span class="material-icons text-white">remove_circle</span></a>
                     </div>
                 </div>
                     <?php
