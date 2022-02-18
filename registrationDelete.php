@@ -7,25 +7,18 @@ if ($_SESSION['userID']) {
     include "nav.php";
     include "functions.php";
     include "api/user-api.php";
-	
+
     $eventID = $_GET['eventID'];
 
-	$sql = "DELETE FROM calendarEvents WHERE eventID= '$eventID'";	
+    $sql = "DELETE FROM calendarEvents WHERE eventID= '$eventID'";
 
-	//echo $sql . "<br>";
-	
-
-	// delete the row from the table
-	$rs = mysqli_query($dbc, $sql);
-
-	if ($rs) {
-		echo "Record Successfully Deleted!";
-	}
-	else {
-		echo "Record Deletion Failed!";	
-	}
+    //echo $sql . "<br>";
 
 
+    // delete the row from the table
+    $rs = mysqli_query($dbc, $sql);
+
+    header("Location: index.php");
+}
 ?>
 
-<a href="index.php">Return to the homepage</a>

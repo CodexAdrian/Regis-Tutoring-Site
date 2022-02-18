@@ -7,8 +7,7 @@ if ($_SESSION['userID']) {
     include "functions.php";
     include "api/user-api.php";
     // commented out because it is causing page not to load
-    $userID = $_GET['userID'];
-    $sql = "SELECT * FROM users WHERE userID = $userID";
+    $sql = "SELECT * FROM users WHERE userID = " . $_GET['userID'];
     $rs = mysqli_query($dbc, $sql);
     $row = mysqli_fetch_array($rs);
     $_SESSION['userID'] = $row['userID'];
@@ -82,9 +81,9 @@ if ($_SESSION['userID']) {
                             <p class="text-md text-slate-400"><?= $startTime . " - " . $endTime ?></p>
                         </div>
                     </div>
-                    <div class="flex">
-                        <a href="mailto:<?= $email ?>?subject=Tutor help&body=Hi<?= $row['firstName'] ?>"><span class="material-icons text-white">email</span></a>
-                        <a onclick="return confirm('Are you sure you would like to cancel your meeting with <?= $tutorName ?>?')" href="registrationDelete.php?eventID=<?=$eventID?>"><span class="material-icons text-white">remove_circle</span></a>
+                    <div class="flex mr-5">
+                        <a href="mailto:<?= $email ?>?subject=Tutor help&body=Hi <?= $row['firstName'] ?>" class="rounded-full h-min w-min p-2 mr-2" style="background-color: #343046; color: #AEA8CE"><span class="material-icons">email</span></a>
+                        <a onclick="return confirm('Are you sure you would like to cancel your meeting with <?= $tutorName ?>?')" href="registrationDelete.php?eventID=<?=$eventID?>" class="rounded-full h-min w-min p-2" style="background-color: #343046; color: #D61341"><span class="material-icons">remove_circle</span></a>
                     </div>
                 </div>
                     <?php
