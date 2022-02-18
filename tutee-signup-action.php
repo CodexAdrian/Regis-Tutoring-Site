@@ -32,19 +32,19 @@ $row0 = mysqli_fetch_array($rs0);
 $topicID = $row0['topicID'];
 
 //" . $_SESSION['userID'] . "
-echo "test1";
+echo "test2  ";
 
 #Inserting the entry into the table
-$sql = "
+$sqlInsert = "
 	INSERT INTO calendarEvents
-	(tutorID, studentID, eventDate, topicID, periodID, extraMaterial) 
+	(tutorID, studentID, eventDate, topicID, periodID) 
 	VALUES 
-	($tutorID, {$_SESSION['userID']}, '$eventDate', $topicID, $periodID, '$fileName')
+	('$tutorID', '{$_SESSION['userID']}', '$eventDate', '$topicID', '$periodID')
 ";
 
-echo "$sql";
+echo "$sqlInsert";
 
-$rs = mysqli_query($dbc, $sql);
+$rs = mysqli_query($dbc, $sqlInsert);
 
 if ($rs) {
 	echo "Record Successfully Inserted!";
