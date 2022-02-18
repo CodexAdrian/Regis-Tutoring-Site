@@ -9,6 +9,7 @@ if ($_SESSION['userID']) {
 
 <form action = "search.php" method = "post">
     <input name = "searchString" size = "20" placeholder = "Search the database">
+    <button type="submit" name="search" value="searchDatabase">
 </form>
 
 <?php
