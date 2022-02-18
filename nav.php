@@ -1,4 +1,5 @@
 <?php
+$userID = $_SESSION['userID'];
 ?>
 <html>
 <head>
@@ -33,7 +34,7 @@
     <div class="flex flex-row h-full">
         <div class="flex justify-between p-4 pt-5 border-gray-700 border-r-2 h-full">
             <div class="flex flex-col h-full">
-                <span class="material-icons text-white text-3xl pb-10">home</span>
+                <a href = "homepage.php?userID=<?php echo $userID; ?>"><span class="material-icons text-white text-3xl pb-10">home</span></a>
                 <a href = "tutor-application.php"><span class="material-icons text-white text-3xl pb-10">school</span></a>
                 <a href = "search.php"><span class="material-icons text-white text-3xl pb-10">account_circle</span></a>
                 <a href = "tutee-signup.php"><span class="material-icons text-white text-3xl pb-10">event</span></a>
