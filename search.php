@@ -35,6 +35,12 @@ if ($_SESSION['userID']) {
                 echo "$firstName $lastName";
             }
         }
+
+        #Searching topics
+        $sql = "
+            SELECT *
+            FROM topics
+        ";
     }
 }
 else {
