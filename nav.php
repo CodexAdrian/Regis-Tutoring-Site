@@ -25,6 +25,9 @@ $userID = $_SESSION['userID'];
             <div class="rounded-3xl p-2 mt-auto mb-auto ml-10 flex"
                  style="background-color: #D61341"><p class="text-white ml-3"><a href="search.php">Tutor Info</a></p><span
                         class="material-icons text-white ml-2 mr-3">account_circle</span></div>
+            <div class="rounded-3xl p-2 mt-auto mb-auto ml-10 flex"
+                 style="background-color: #D61341"><p class="text-white ml-3"><a href="uploadForm.php">Profile Picture</a></p><span
+                        class="material-icons text-white ml-2 mr-3">settings</span></div>
         </div>
         <div class="flex flex-row">
             <span class="material-icons text-white text-3xl p-4">notifications</span>

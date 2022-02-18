@@ -72,10 +72,12 @@ if (isset($_SESSION['userID'])) {
             $startTime = $row['startTime'];
             $endTime = $row['endTime'];
             $timeBlockName = $row['timeBlockName'];
-
+            
+            //$displayedStartTime = date("g:i a", strtotime($row["startTime"]));
+            //echo "$displayedStartTime";
             //if{}
             //else{}
-
+            
             echo "<option class ='bg-gray-700' value ='$periodID'>$startTime-$endTime,  $timeBlockName </option>";
 
         }
@@ -90,7 +92,7 @@ if (isset($_SESSION['userID'])) {
         $sql3 = "
             SELECT * 
                 FROM dateDesc 
-                WHERE dateDesc.schoolDate > DATE(SYSDATE())
+                WHERE dateDesc.schoolDate >= DATE(SYSDATE())
                 ORDER BY schoolDate;  
             ";
 
@@ -107,7 +109,7 @@ if (isset($_SESSION['userID'])) {
             $letterDay = $row['letterDay'];
             $displayedDate = (new DateTime($row['schoolDate']))->format('D, F d');
             
-            echo "<option class ='bg-gray-700' value ='$schoolDate'>$displayedDate, $letterDay</option>";
+            echo "<option class ='bg-gray-700' value ='$schoolDate'>$displayedDate | $letterDay-day</option>";
 
 
             if ($index >= 5){
