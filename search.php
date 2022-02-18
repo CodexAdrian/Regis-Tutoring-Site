@@ -6,17 +6,22 @@ if ($_SESSION['userID']) {
     include "nav.php";
     include "functions.php";
 ?>
+<div class = "m-5">
+    <p class="text-white text-2xl">Search the Tutor Database</p>
+    <br>
+    <br>
+
 
 <form action = "search.php" method = "post">
     <input name = "searchString" size = "20" placeholder = "Search the database">
     <button type="submit" name="search" value="searchDatabase">
 </form>
-
+</div>
 <?php
     if(isset($_POST['searchString'])) {
         $searchString = $_POST['searchString'];
         
-        echo "<p class=\"text-slate-400 text-2xl mb-2 font-bold\">Search the database</p>";
+        echo "<p class=\"text-slate-400 text-2xl mb-2 font-bold\">Data Results</p>";
         echo "<br>";
 
         #Searching teachers
