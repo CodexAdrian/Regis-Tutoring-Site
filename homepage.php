@@ -3,7 +3,6 @@ include "session.php";
 #Checks if the session is still maintained
 if ($_SESSION['userID']) {
     include "auth.php";
-    include "nav.php";
     include "functions.php";
     include "api/user-api.php";
     // commented out because it is causing page not to load
@@ -17,6 +16,7 @@ if ($_SESSION['userID']) {
     $_SESSION['lastName'] = $row['lastName'];
     $_SESSION['picture'] = $row['picture'];
     $_SESSION['fullname'] = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
+    include "nav.php";
 ?>
 
     <div class="grid grid-cols-5 w-full h-min">

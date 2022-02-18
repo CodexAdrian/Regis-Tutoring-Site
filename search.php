@@ -61,6 +61,7 @@ if ($_SESSION['userID']) {
             }
             echo "</ul><br>";
         }
+        echo "<a href = \"index.php\">Return to the homepage</a>";
     }
 }
 else {
