@@ -37,9 +37,9 @@ echo "test2  ";
 #Inserting the entry into the table
 $sqlInsert = "
 	INSERT INTO calendarEvents
-	(tutorID, studentID, eventDate, topicID, periodID) 
+	(tutorID, studentID, eventDate, topicID, periodID, extraMaterial) 
 	VALUES 
-	('$tutorID', '{$_SESSION['userID']}', '$eventDate', '$topicID', '$periodID')
+	('$tutorID', '{$_SESSION['userID']}', '$eventDate', '$topicID', '$periodID', '$fileName')
 ";
 
 echo "$sqlInsert";
@@ -101,9 +101,10 @@ $fileContents =
 	$additionalComments
 ;
 
-$myfile = fopen("tutee-signups/$filename.txt", "w") or die("Unable to generate file!");		//Double check that this file declaration works
+$myfile = fopen("tutee-signups/$fileName.txt", "w") or die("Unable to generate file!");		//Double check that this file declaration works
 fwrite($myfile, $fileContents);
 
+fclose($myfile);
 
 $to = $recipientUsername . "@regis.org";		//Can be replaced by getEmail function eventually
 $subject = "New Tutee Signup from: " . $_SESSION['fullName'];
@@ -123,7 +124,7 @@ if (mail($to, $subject, $message, $headers)) {
 	echo "Something went wrong.";
 }
 
-fclose($myfile);
+
 ?>
 
 <a href="homepage.php">Go back to the Home Page</a>

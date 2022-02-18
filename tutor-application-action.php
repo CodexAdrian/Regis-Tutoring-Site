@@ -4,10 +4,7 @@
 	include "functions.php";
 
 	# Write form post variables into local variables
-	$lastName = $_POST['lastName'];
-    $firstName = $_POST['firstName'];
     $recipientID = $_POST['recipientID'];
-    $subjectID = $_POST['subjectID'];
     $refTeacherID = $_POST['refTeacherID'];
     $prefDayID = $_POST['prefDayID'];
     $prefTimeBlockID = $_POST['prefTimeBlockID'];
@@ -20,8 +17,18 @@
 	$tutorReason = $_POST['tutorReason'];
     $fileName = uniqid('', true);
 
-	// $senderID = $_GET['userID'] // also need the userID through a get variable in order to run the insert statement. This GET variable will not work right now. 
-	
+	$sql0 = "
+		SELECT * FROM users
+			INNER JOIN subjects ON users.deptID = subjects.subjectID
+			WHERE userTypeID = 3 AND isDeptHead = 1 AND userID = '$recipientID' ;
+	";
+
+	$rs0 = mysqli_query($dbc, $sql0);
+	$row0 = mysqli_fetch_array($rs0);
+	$subjectID = $row0['subjectID'];
+
+	//echo "$subjectID";
+
 	// echo ; 
 	// exit;
 	//Need to fileIO the reasoning 
@@ -30,9 +37,11 @@
 		INSERT INTO tutorApplications
 		(recipientID, senderID, subjectID, refTeacherID, prefDayID, prefTimeBlockID, reasoningFile, oneOnOne) 
 		VALUES 
-		($recipientID,". $_SESSION['userID'].", $subjectID, $refTeacherID, $prefDayID, $prefTimeBlockID, $fileName, $oneOnOne)
+		($recipientID,". $_SESSION['userID'].", $subjectID, $refTeacherID, $prefDayID, $prefTimeBlockID, '$fileName', $oneOnOne)
 	";
 
+	echo "$sql";
+	
 	#Inserting the row into the table
 	$rs = mysqli_query($dbc, $sql);
 	
@@ -78,7 +87,7 @@
 		"To: $recipientFullName, referencing $refTeacherFullName" . "\r\n" . 
 		$tutorReason
 	;
-	$myfile = fopen("tutor-applications/$filename.txt", "w") or die("Unable to generate file!");		//Double check that this file declaration works
+	$myfile = fopen("tutor-applications/$fileName.txt", "w") or die("Unable to generate file!");		//Double check that this file declaration works
 	fwrite($myfile, $fileContents);
 	
 
