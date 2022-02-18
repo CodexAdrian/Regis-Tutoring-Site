@@ -24,7 +24,7 @@
 	
 	// echo ; 
 	// exit;
-	//Need to fileIO the reasoning
+	//Need to fileIO the reasoning 
 
 	$sql = "
 		INSERT INTO tutorApplications
