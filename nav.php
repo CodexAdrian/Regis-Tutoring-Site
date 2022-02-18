@@ -27,10 +27,10 @@
     <div class="flex flex-row h-full">
         <div class="flex justify-between p-4 pt-5 border-gray-700 border-r-2 h-full">
             <div class="flex flex-col h-full">
-                <span class="material-icons text-white text-3xl pb-10">home</span>
-                <span class="material-icons text-white text-3xl pb-10">school</span>
-                <span class="material-icons text-white text-3xl pb-10">account_circle</span>
-                <span class="material-icons text-white text-3xl pb-10">event</span>
+                <a href = "homepage.php"><span class="material-icons text-white text-3xl pb-10">home</span></a>
+                <a href = "moodle.regis.org"><span class="material-icons text-white text-3xl pb-10">school</span></a>
+                <a href = ""><span class="material-icons text-white text-3xl pb-10">account_circle</span></a>
+                <a href = "regis.org/news.cfm"><span class="material-icons text-white text-3xl pb-10">event</span></a>
             </div>
         </div>
 
