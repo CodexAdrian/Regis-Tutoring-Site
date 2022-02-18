@@ -19,14 +19,14 @@ Keywords across all languages should be lowercase
 
 PHP
 ```PHP
-$bool = false; //good
-$bool = FALSE; //bad
+$bool = false; //bad
+$bool = FALSE; //good
 ```
 MySQL
 ```mySQL
-select * from table where id = 4; ##good
+select * from table where id = 4; ##bad
 
-SELECT * FROM table WHERE id = 4; ##bad
+SELECT * FROM table WHERE id = 4; ##good
 ```
 # PHP
 
