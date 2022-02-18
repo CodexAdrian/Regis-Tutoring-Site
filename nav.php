@@ -20,7 +20,10 @@
                         class="material-icons text-white ml-2 mr-3">school</span></div>
             <div class="rounded-3xl p-2 mt-auto mb-auto ml-10 flex"
                  style="background-color: #D61341"><p class="text-white ml-3"><a href="tutee-signup.php">Tutee Sign-Up</a></p><span
-                        class="material-icons text-white ml-2 mr-3">school</span></div>
+                        class="material-icons text-white ml-2 mr-3">event</span></div>
+            <div class="rounded-3xl p-2 mt-auto mb-auto ml-10 flex"
+                 style="background-color: #D61341"><p class="text-white ml-3"><a href="search.php">Tutor Info</a></p><span
+                        class="material-icons text-white ml-2 mr-3">account_circle</span></div>
         </div>
         <div class="flex flex-row">
             <span class="material-icons text-white text-3xl p-4">notifications</span>
