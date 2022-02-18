@@ -1,8 +1,6 @@
 <?php
     include "session.php";
-include "session.php";
-if (isset($_SESSION['userID'])) {
-
+    if (isset($_SESSION['userID'])) {
         include "auth.php";
         include "nav.php";
         include "functions.php";
