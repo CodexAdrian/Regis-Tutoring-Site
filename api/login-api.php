@@ -6,7 +6,7 @@ function getUserToken(String $username, String $password) {
     $request = file_get_contents(BASE_LOGIN_URI . "?service=".SERVICE."&username=$username&password=$password");
     //echo $info;
     $results = json_decode($request);
-    if($results->{'error'} != null) {
+    if(property_exists($results, "error")) {
         //echo $results->{"error"};
         return null;
     }

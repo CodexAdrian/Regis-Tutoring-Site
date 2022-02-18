@@ -1,11 +1,9 @@
-<html>
-    <body>
-        <?php
-            include "api/login-api.php";
-            $token = getUserToken($_POST['username'], $_POST['password']);
-            echo $token . "<br>";
-            $id = getUserID($token);
-            echo $id;
-        ?>
-    </body>
-</html>
+<?php
+include "api/login-api.php";
+include "api/user-api.php";
+include "session.php";
+$token = getUserToken($_POST['username'], $_POST['password']);
+$id = getUserID($token);
+$userProfile = getUserProfile($id, $token);
+header("Location: homepage.php?userID=$userProfile->id");
+?>

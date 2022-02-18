@@ -3,12 +3,22 @@
     include "nav.php";
     include "session.php";
 
-    if($_SESSION['userTypeID'] == 2) {
-        
-    }
-    elseif($_SESSION['userTypeID'] == 3){
+    include "api/user-api.php";
 
+    switch ($_SESSION['userTypeID']) {
+        case UserType::Tutor: {
+            break;
+        }
+
+        case UserType::Teacher: {
+            break;
+        }
+
+        default: {
+
+        }
     }
+
     //Something about current time slots
     //Something about tutor applications
 ?>

@@ -5,9 +5,6 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="output.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id"
-          content="361910950363-9b91rmt0ersa4qohedfue2lntef5oc6e.apps.googleusercontent.com">
     <title>Tutoring Sign-In</title>
 </head>
 <body class="m-0 justify-center flex content-center flex-col text-center"

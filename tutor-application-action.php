@@ -26,15 +26,15 @@
 	// exit;
 	//Need to fileIO the reasoning
 
-	$sql = "INSERT INTO tutorApplications
+	$sql = "
+		INSERT INTO tutorApplications
 		(recipientID, senderID, subjectID, refTeacherID, prefDayID, prefTimeBlockID, reasoningFile, oneOnOne) 
 		VALUES 
-		($recipientID, " . $_SESSION['userID'] . ", $subjectID, $refTeacherID, $prefDayID, $prefTimeBlockID, $fileName, $isPrivate)";		
+		($recipientID, $_SESSION['userID'], $subjectID, $refTeacherID, $prefDayID, $prefTimeBlockID, $fileName, $isPrivate)
+	";		
+	//Why doesn't this userID work?
 
-	// will not execute, need to get the senderID first
-	//echo $sql . "<br>";
-	
-	// insert the row into the table
+	#Inserting the row into the table
 	$rs = mysqli_query($dbc, $sql);
 	
 	if ($rs) {
@@ -92,7 +92,7 @@
 	;
 	$header = 
 		"From: " . $_SESSION['fullName'] . " <" . $_SESSION['username'] . "@regis.org>" . "\r\n" . 
-		"CC: " . $refTeacherFullName . "@regis.org"
+		"CC: " . $refTeacherUsername . "@regis.org"
 	;
 	
 	if (mail($to,$subject,$message,$headers)) {
