@@ -8,16 +8,15 @@
         ?>
         <b class="text-slate-400 text-xl">Tutee signup form:</b>
         <br>
-        <br>
-         
-        
+        <br>   
+
 <form action="tutee-signup-action.php" method="post">   
         <select name="tutorID">
 
             <?php
 
             $sql1 = "
-            SELECT tutorInfo.userID, users.firstName, users.lastName, topics.topicID, topicName, subjectName  
+            SELECT tutorInfo.userID, users.firstName, users.lastName, topics.topicID, topicName, subjectName, timeBlockName 
                 FROM tutorInfo
     
                     INNER JOIN users ON  tutorInfo.userID = users.userID
@@ -26,7 +25,8 @@
                     INNER JOIN days ON tutorInfo.dayID = days.dayID
                     INNER JOIN timeBlocks ON tutorInfo.timeBlockID = timeBlocks.timeBlockID
     
-                    WHERE userTypeID = 2;  
+                    WHERE userTypeID = 2
+                    ORDER BY topics.topicID;  
             ";
 
             $rs = mysqli_query($dbc, $sql1);     //Need to rewrite the query
@@ -41,13 +41,19 @@
                 $topicID = $row['topics.topicID'];
                 $topicName = $row['topicName'];
                 $subjectName = $row['subjectName'];
+                $timeBlockName = $row['timeblockName'];
 
-                echo "<option value = '$tutorID'>$firstName $lastName , $topicName </option>";
+                echo "<option class ='bg-gray-700' value = '$tutorID'>$firstname $lastName , $topicName , $timeBlockName </option>";
 
                 //Echo out all the tutors and their respespective subjects in a dropdown, storing the selected tutor's ID to 
             }
 
             ?>
+        </select>
+
+        <select name=">
+
+
         </select>
     
 </form>
@@ -59,9 +65,10 @@
         </body>
         </html>
         <?php
-    }#Redirects users back to the index page if session times out.
+    } #Redirects users back to the index page if session times out.
     else {
-        header("Location: index.php");
+        echo "Your session has expired. Redirecting...";
+        header("Location: cs.regis.org/tutor");
         exit();
     }
 ?>
