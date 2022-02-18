@@ -15,6 +15,7 @@ if ($_SESSION['userID']) {
     $_SESSION['firstName'] = $row['firstName'];
     $_SESSION['lastName'] = $row['lastName'];
     $_SESSION['picture'] = $row['picture'];
+    $_SESSION['fullname'] = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
 ?>
 
     <div class="grid grid-cols-5 w-full">
