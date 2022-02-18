@@ -15,7 +15,7 @@ if ($_SESSION['userID']) {
 
 
 <form action = "search.php" method = "post">
-    <input name = "searchString" size = "20" placeholder = "Search the database">
+    <input class ='bg-gray-700' name = "searchString" size = "20" placeholder = "Search the database">
     <button type="submit" name="search" value="searchDatabase">
 </form>
 
@@ -113,4 +113,5 @@ else {
     exit();
 }
 ?>
-<a href = "homepage.php?userID=<?php echo $userID; ?>">Return to the Homepage<span class="material-icons text-white text-3xl pb-10">home</span></a>
+<!---<a href = "homepage.php?userID=<?php echo $userID; ?>">Return to the Homepage<span class="material-icons text-white text-3xl pb-10">home</span></a>
+-->
