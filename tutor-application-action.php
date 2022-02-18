@@ -40,13 +40,13 @@
 		($recipientID,". $_SESSION['userID'].", $subjectID, $refTeacherID, $prefDayID, $prefTimeBlockID, '$fileName', $oneOnOne)
 	";
 
-	echo "$sql";
+	//echo "$sql";
 	
 	#Inserting the row into the table
 	$rs = mysqli_query($dbc, $sql);
 	
 	if ($rs) {
-		echo "Record Successfully Inserted!";
+		//echo "Record Successfully Inserted!";
 	}
 	else {
 		echo "Record Insertion Failed!";	
@@ -87,8 +87,8 @@
 		"To: $recipientFullName, referencing $refTeacherFullName" . "\r\n" . 
 		$tutorReason
 	;
-	$myfile = fopen("tutor-applications/$fileName.txt", "w") or die("Unable to generate file!");		//Double check that this file declaration works
-	fwrite($myfile, $fileContents);
+	//$myfile = fopen("tutor-applications/$fileName.txt", "w") or die("Unable to generate file!");		//Double check that this file declaration works
+	//fwrite($myfile, $fileContents);
 	
 
 	$to = $recipientUsername . "@regis.org";		//Can be replaced by getEmail function eventually
@@ -104,13 +104,12 @@
 	;
 	
 	if (mail($to,$subject,$message,$headers)) {
-		echo "Your application has successfully been submitted.";
+		//echo "Your application has successfully been submitted.";
 	}
 	else{
 		echo "Something went wrong.";
 	}
 
-	fclose($myfile);
+	//fclose($myfile);
+    header("Location: homepage.php?userID=".$_SESSION['userID']);
 ?>
-
-<a href="homepage.php">Go back to the Home Page</a>
