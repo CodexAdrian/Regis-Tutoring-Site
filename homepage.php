@@ -2,7 +2,6 @@
 include "session.php";
 #Checks if the session is still maintained
 if ($_SESSION['userID']) {
-    include "nav.php";
     include "auth.php";
     include "functions.php";
     include "api/user-api.php";
@@ -17,6 +16,7 @@ if ($_SESSION['userID']) {
     $_SESSION['lastName'] = $row['lastName'];
     $_SESSION['picture'] = $row['picture'] ?? 'default-profile.png';
     $_SESSION['fullname'] = $_SESSION['firstName'] . " " . $_SESSION['lastName'];
+    include "nav.php";
 ?>
     <div class="m-5 w-full">
         <p class="text-2xl m-5 max-w-full border-b-2 pb-2 border-gray-500">Welcome Back, <?= $_SESSION['firstName'] ?>

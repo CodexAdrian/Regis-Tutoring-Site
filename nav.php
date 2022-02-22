@@ -1,5 +1,7 @@
 <?php
+
 $userID = $_SESSION['userID'];
+$picturePath = "uploadedProfilePictures/" . $_SESSION['picture'];
 ?>
 <html>
 <head>
@@ -32,7 +34,7 @@ $userID = $_SESSION['userID'];
         </div>
         <div class="flex flex-row">
             <a href="uploadForm.php"><span class="material-icons text-white text-3xl p-4">settings</span></a>
-            <img src="<?= $_SESSION['picture'] ?>" class="h-12 m-auto mr-3 rounded-3xl" alt="logo"/>
+            <img src="<?= $picturePath ?>" class="h-12 m-auto mr-3 rounded-3xl" alt="logo"/>
         </div>
     </div>
     <div class="flex flex-row h-full">
