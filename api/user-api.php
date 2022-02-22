@@ -1,4 +1,7 @@
 <?php
+
+use JetBrains\PhpStorm\ArrayShape;
+
 $dbc = mysqli_connect("cs.regis.org", "aortiz22", "38271038", "tutor");
 const BASE_URI = "https://moodle.regis.org/webservice/rest/server.php";
 
@@ -22,7 +25,7 @@ abstract class SubjectType {
     const PhysicalEducation = 10;
 }
 
-function getSubjectDecoration($subjectTypeId) {
+#[ArrayShape(["color" => "string", "icon" => "string"])] function getSubjectDecoration($subjectTypeId): array {
     $color = '#FFFFFF';
     $icon = 'warning';
     switch ($subjectTypeId) {

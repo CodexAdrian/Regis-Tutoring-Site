@@ -19,11 +19,17 @@
     <label>
         <input type="password" class="rounded-full bg-slate-600 p-2 pl-4 m-1 text-white" autocomplete="password" placeholder="Password" name="password">
     </label>
+        <?php
+            if(isset($_GET['error'])) {
+        ?>
+                <p class="text-red-500 text-sm">Invalid username or password</p>
+        <?php
+            }
+        ?>
     <label>
         <input type="submit" class="bg-slate-600 rounded-full p-2 pl-4 pr-4 m-1 text-white" value="Login">
     </label>
 </form>
-<a class="text-white mt-2" href="homepage.php">Temporary bypass</a>
 </body>
 
 </html>
