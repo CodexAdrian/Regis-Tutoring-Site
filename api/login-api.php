@@ -22,6 +22,7 @@ function getUserID(String $token) {
     $results = json_decode($request);
     //echo $request;
     $id = $results->{'userid'};
+
     if($id != null) {
         return $id;
     }

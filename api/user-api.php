@@ -86,33 +86,33 @@ class UserProfile {
     }
 }
 
-function getUserProfile(int $userid, string $token): UserProfile|null {
+function getUserProfile(int $extraID, string $token): UserProfile|null {
     $dbc = mysqli_connect("cs.regis.org", "aortiz22", "38271038", "tutor");
     $sql = "
                 select * 
                 from users 
-                where extraID = $userid
+                where extraID = $extraID
             ";
 
     $rs = mysqli_query($dbc, $sql);
-    //echo $rs;
-    if (!$rs) {
-        //I was told this was not necessary after i finished this -_-
-        $userProfile1 = file_get_contents(BASE_URI . "?wstoken=$token&moodlewsrestformat=json&wsfunction=core_webservice_get_site_info");
-        $userProfile2 = file_get_contents(BASE_URI . "?wstoken=$token&moodlewsrestformat=json&wsfunction=core_user_get_users_by_field&field=id&values[]=$userid");
-        //$profilePicture = file_get_contents($userProfile1->{'userpictureurl'} . );
+//    echo $rs;
+    $dbProfile = mysqli_fetch_array($rs);
+
+    if (!$dbProfile) {
+        $moodleData = file_get_contents(BASE_URI . "?wstoken=$token&wsfunction=core_webservice_get_site_info&moodlewsrestformat=json");
+        //echo $moodleData;
+        $userProfile1 = json_decode($moodleData);
         $firstName = $userProfile1->{'firstname'};
         $lastName = $userProfile1->{'lastname'};
-        $userName = $userProfile2->{'username'};
+        $userName = $userProfile1->{'username'};
 
         $sql = "
-        insert into users (userID, firstName, lastName, userName, extraID)
-        values ($userid, $firstName, $lastName, $userName, $userid)
+        insert into users (userTypeID, userName, firstName, lastName, extraID, picture)
+        values (1, '$userName', '$firstName', '$lastName', $extraID, 'default-profile.png');
         ";
-
-        return mysqli_query($dbc, $sql) ? getUserProfile($userid, $token) : null;
+        $mysqli_result = mysqli_query($dbc, $sql);
+        return $mysqli_result ? getUserProfile($extraID, $token) : null;
     } else {
-        $dbProfile = mysqli_fetch_object($rs);
-        return new UserProfile($dbProfile->{'firstName'}, $dbProfile->{'lastName'}, $dbProfile->{'userName'}, $dbProfile->{'userID'});
+        return new UserProfile($dbProfile['firstName'], $dbProfile['lastName'], $dbProfile['userName'], $dbProfile['userID']);
     }
 }

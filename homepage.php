@@ -49,28 +49,43 @@ if ($_SESSION['userID']) {
         </div>
         <div class="m-5">
             <p class="text-xl">Upcoming Events</p>
-            <p class="text-md text-slate-400 max-w-full border-gray-500 border-b-2 pb-2"">Today
-            | <?= date('M d, Y') ?> </p>
             <?php
-            $eventQuery = "
-                SELECT eventID, tutorID, subjectID, firstName, lastName, picture, userName, startTime, endTime FROM calendarEvents
-                INNER JOIN users u on calendarEvents.tutorID = u.userID
-                INNER JOIN periods p on calendarEvents.periodID = p.periodID
-                INNER JOIN topics t on calendarEvents.topicID = t.topicID
-                WHERE studentID = $userID && eventDate = DATE(SYSDATE());
-                ";
-            $rs = mysqli_query($dbc, $eventQuery);
-            while ($row = mysqli_fetch_array($rs)) {
-                $tutorID = $row['tutorID'];
-                $tutorName = $row['firstName'] . " " . $row['lastName'];
-                $eventID = $row['eventID'];
-                $subjectID = $row['subjectID'];
-                $picture = $row['picture'];
-                $email = $row['userName'] . '@regis.org';
-                $startTime = $row['startTime'];
-                $endTime = $row['endTime'];
-                $iconDeco = getSubjectDecoration($subjectID);
-                if (!$picture) $picture = 'default-profile.png';
+            $dateQuery = "SELECT * 
+                FROM dateDesc 
+                WHERE dateDesc.schoolDate >= DATE(SYSDATE())
+                ORDER BY schoolDate;";
+            $index = 0;
+            $dateRs = mysqli_query($dbc, $dateQuery);
+            while ($dateRow = mysqli_fetch_array($dateRs)) {
+                $schoolDate = $dateRow['schoolDate'];
+                $displayedDate = (new DateTime($schoolDate))->format('D, F d');
+                ?>
+                    <p class="text-md text-slate-400 max-w-full border-gray-500 border-b-2 pb-2"">
+                    <?= $displayedDate ?> </p>
+                <?php
+                $index++;
+                $eventQuery = "
+                    SELECT eventID, tutorID, subjectID, firstName, lastName, picture, userName, startTime, endTime FROM calendarEvents
+                    INNER JOIN users u on calendarEvents.tutorID = u.userID
+                    INNER JOIN periods p on calendarEvents.periodID = p.periodID
+                    INNER JOIN topics t on calendarEvents.topicID = t.topicID
+                    WHERE studentID = $userID && eventDate = '$schoolDate';
+                    ";
+                //echo $eventQuery;
+                $rs = mysqli_query($dbc, $eventQuery);
+                while ($row = mysqli_fetch_array($rs)) {
+                    $tutorID = $row['tutorID'];
+                    $tutorName = $row['firstName'] . " " . $row['lastName'];
+                    $eventID = $row['eventID'];
+                    $subjectID = $row['subjectID'];
+                    $picture = $row['picture'];
+                    $email = $row['userName'] . '@regis.org';
+                    $startTime = $row['startTime'];
+                    $endTime = $row['endTime'];
+                    $iconDeco = getSubjectDecoration($subjectID);
+                    if (!$picture) $picture = 'default-profile.png'; else {
+                        $picture = "uploadedProfilePictures/$picture";
+                    };
             ?>
                 <div class=" flex flex-row w-full justify-between m-3">
             <div class="flex flex-row ">
@@ -86,7 +101,11 @@ if ($_SESSION['userID']) {
             </div>
         </div>
     <?php
-            } //End of While loop
+                }
+                if ($index >= 5){
+                    break;
+                }
+            }//End of While loop
     ?>
     </div>
     </div>

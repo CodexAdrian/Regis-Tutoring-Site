@@ -8,11 +8,15 @@
 		$userID = $_SESSION['userID'];
 
 	$target_dir = "/atcs/tutor/uploadedProfilePictures/";
-	$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-	$uploadOk = 1;
-	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    //echo $_FILES["fileToUpload"]["name"];
+    $temp = explode(".", $_FILES["fileToUpload"]["name"]);
+    $tempName = round(microtime(true)) . '.' . end($temp);
+    $target_file = $target_dir . $tempName;
+    //echo $target_file;
 
-	
+	//$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+	$uploadOk = 1;
+
 	// Check if image file is a actual image or fake image
 	if(isset($_POST["submit"])) {
 	  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -36,17 +40,18 @@
 	  echo "Sorry, your file is too large.";
 	  $uploadOk = 0;
 	}
-
+    /*
+    $imageFileType = end($temp);
 	// Allow certain file formats
 	if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 	&& $imageFileType != "gif" ) {
 	  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
 	  $uploadOk = 0;
 	}
-
+*/
 	//Write it into the usersTable
 
-	$pictureName = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
+	$pictureName = htmlspecialchars($tempName);
 
 	$sql1 = "
 				UPDATE `tutor`.`users` 
