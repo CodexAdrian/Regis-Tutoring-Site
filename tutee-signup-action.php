@@ -114,9 +114,12 @@ $message =
 	"Here is their reasoning: $additionalComments" . "\r\n" .
 	"Don't be late!"
 ;
-$header =
-	"From: " . $_SESSION['fullname'] . " <" . $_SESSION['username'] . "@regis.org>" . "\r\n" .
-	"CC: " . $_SESSION['fullname'] . "@regis.org";
+$headers =
+	"From: " . $_SESSION['fullname'] . '<' . $_SESSION['username'] . '@regis.org>' . "\r\n" .
+	"CC: " . $_SESSION['fullname'] . '@regis.org';
+
+	//"From: " . $_SESSION['fullname'] . " <" . $_SESSION['username'] . "@regis.org>" . "\r\n" .
+
 
 if (mail($to, $subject, $message, $headers)) {
 	//echo "Your application has successfully been submitted.";
